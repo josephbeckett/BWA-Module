@@ -1,25 +1,43 @@
-html{
+html, body{
     font-family: 'Manjari',sans-serif;
-}
-
-.navbar{
-    font-family: 'Gugi',cursive;
-}
-
-.body{
-    width: 100vw;
     height: 100vh;
+    width: 100vw;
+    overflow: hidden;
 }
 
-.index-box{
-    justify-content: center;
-    align-content: center;
+.navbar {
+    font-family: 'Gugi',cursive;
+    background-color: rgba(0, 0, 0, 0.5);
+    position: absolute !important;
+    width: 100vw;
+    text-decoration-color: rgb(255, 255, 255);
 }
 
-.index-box-center {
-    margin: auto;
-    width: 50%;
-    border: 4px solid rgb(51, 90, 216);
-    padding: 10px;
+.index-title-section {
+    background-image: url('../assets/index-background-2.jpg');
+    height: 100vh;
+    width: 100vw;
+    position: relative;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center;
+    background-size: cover;
+    z-index: -10;
+}
+
+.index-title-section-text {
+    color: #ffffff;
+    position: absolute;
     text-align: center;
+    top: 30%;
+    left: 50%;
+    -webkit-transform: translate3d(-50%, -50%, 0);
+    transform: translate3d(-50%, -50%, 0);
+    font-size: 40px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+}
+
+.thin {
+    font-weight: 700;
 }
