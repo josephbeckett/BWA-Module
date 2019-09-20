@@ -26,7 +26,7 @@ html, body{
 }
 
 .index-title-section-text {
-    color: #ffffff;
+    color: #636d2d;
     position: absolute;
     text-align: center;
     top: 30%;
@@ -36,6 +36,7 @@ html, body{
     font-size: 40px;
     text-transform: uppercase;
     letter-spacing: 0.1em;
+    border-block-color: black;
 }
 
 .thin {
