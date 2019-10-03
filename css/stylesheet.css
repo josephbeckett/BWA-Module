@@ -1,5 +1,5 @@
 html, body{
-    font-family: 'Manjari',sans-serif;
+    font-family: 'Manjari',sans-serif!important;
     height: 100vh;
     width: 100vw;
     overflow: hidden;
@@ -10,11 +10,14 @@ html, body{
     background-color: rgba(0, 0, 0, 0.5);
     position: absolute !important;
     width: 100vw;
-    text-decoration-color: rgb(255, 255, 255);
+    z-index: 0;
 }
 
-.index-title-section {
-    background-image: url('../assets/index-background-2.jpg');
+.navbar-brand{ 
+    color: rgb(24, 24, 218)!important;
+}
+.index-section {
+    background-image: url('../assets/index-background-3.jpg');
     height: 100vh;
     width: 100vw;
     position: relative;
@@ -25,20 +28,16 @@ html, body{
     z-index: -10;
 }
 
-.index-title-section-text {
-    color: #636d2d;
-    position: absolute;
+.index-box{
     text-align: center;
-    top: 30%;
-    left: 50%;
-    -webkit-transform: translate3d(-50%, -50%, 0);
-    transform: translate3d(-50%, -50%, 0);
-    font-size: 40px;
-    text-transform: uppercase;
-    letter-spacing: 0.1em;
-    border-block-color: black;
+    display: block;
+    z-index: 10;
+    padding-top: 100px;
 }
 
-.thin {
-    font-weight: 700;
+.index-form{
+    display: inline-block;  
+    margin-left: auto;
+    margin-right: auto;
+    z-index: 15;
 }
