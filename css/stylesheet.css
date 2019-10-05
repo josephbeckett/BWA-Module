@@ -2,7 +2,6 @@ html, body{
     font-family: 'Manjari',sans-serif!important;
     height: 100vh;
     width: 100vw;
-    overflow: hidden;
 }
 
 .navbar {
@@ -10,7 +9,7 @@ html, body{
     background-color: rgba(0, 0, 0, 0.5);
     position: absolute !important;
     width: 100vw;
-    z-index: 0;
+    z-index: 10;
 }
 
 .navbar-brand{ 
@@ -25,19 +24,35 @@ html, body{
     background-attachment: fixed;
     background-position: center;
     background-size: cover;
-    z-index: -10;
 }
 
 .index-box{
     text-align: center;
     display: block;
-    z-index: 10;
-    padding-top: 100px;
+    z-index: 15;
+    padding-top: 200px;
 }
 
 .index-form{
     display: inline-block;  
     margin-left: auto;
     margin-right: auto;
+    z-index: 20;
+}
+
+.signup-form {
+    display: inline-table;
+    width: 300px;
+    z-index: 20;
+}
+
+.signup-box {
+    text-align: center;
+    display: block;
     z-index: 15;
+    padding-top: 100px;
+}
+
+.form-group {
+    z-index: 25;
 }

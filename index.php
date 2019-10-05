@@ -1,4 +1,6 @@
-<!doctype html>
+<?php
+    include("login.php");
+?>
 <html lang="en">
 
 <head>
@@ -12,7 +14,7 @@
         <link rel="stylesheet" href="css/stylesheet.css">
         <link href="https://fonts.googleapis.com/css?family=Gugi|Manjari&display=swap" rel="stylesheet">
         
-    <title>Index Page</title>
+    <title>Arcadius Cars</title>
 </head>
 
 <body>
@@ -25,7 +27,10 @@
             <a class="navbar-brand"><img width="30" height="30" src="assets/Web Icon.png" alt=""></a>
             <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
                 <li class="nav-item active">
-                    <a class="nav-link" href="index.html">Home</a>
+                    <a class="nav-link" href="index.php">Home</a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" href="signup.php">Sign Up</a>
                 </li>
             </ul>
             <!-- <form class="form-inline my-2 my-lg-0">
