@@ -40,6 +40,11 @@ html, body{
     z-index: 20;
 }
 
+.login-error-text {
+    color: white;
+    font-size: 30px;
+}
+
 .signup-form {
     display: inline-table;
     width: 300px;
@@ -55,4 +60,10 @@ html, body{
 
 .form-group {
     z-index: 25;
+}
+
+@media all and (max-width: 990px) {
+    .navbar-brand {
+        display: none;
+    }
 }
