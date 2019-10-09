@@ -16,7 +16,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $info = ("Your username or password is incorrect");
         } elseif ($decryptpassword == true) {
             $_SESSION['login_user'] = $row['userID'];
-            header("location: loginwelcomepage.php");
+            header("location: index.php");
         }
     }
 }

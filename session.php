@@ -8,6 +8,6 @@
     $_SESSION['uid'] = $row['userID'];
     $_SESSION['useremail'] = $row['Email'];
     if(!isset($_SESSION["login_user"])){
-        header("location: index.php");
-    }
+      header("location: index.php");
+    } 
 ?>

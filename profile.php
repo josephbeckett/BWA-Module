@@ -10,16 +10,19 @@ include("session.php");
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <title>Profile</title>
 </head>
 
 <body>
+    <?php
+    include 'navbar.php';
+    ?>
     <h1>Welcome <?php echo $row["Username"]; ?></h1>
     <h1><?php
         if ($row["House_Name"] == "") {
             echo "House Name or Number not supplied";
         } else {
-            echo $row['House_Number'];
+            echo $row['House_Name'];
         }
 
         ?></h1>
