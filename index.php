@@ -1,6 +1,9 @@
 <?php
 include("login.php");
-?>
+
+if (isset($_POST['search'])) {
+    require "carsearch.php";
+} ?>
 <html lang="en">
 
 <head>
@@ -26,8 +29,17 @@ include("login.php");
         include('searchform.php');
     } else {
         include('loginform.php');
-        }
+    }
 
+    if (isset($_POST['search'])) {
+    if (count($results) > 0) {
+    foreach ($results as $r) {
+    printf("<div>%s - %s</div>", $r['name'], $r['email']);
+    }
+    } else {
+    echo "No results found";
+    }
+    }
     ?>
 
 
