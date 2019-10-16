@@ -1,7 +1,7 @@
 <?php
 include('session.php');
 $info ='';
-if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+if (isset($_POST['Update'])) {
     $username = mysqli_real_escape_string($conn, $_POST["NewUsername"]);
     $email = mysqli_real_escape_string($conn, $_POST["NewEmail"]);
     $housename = mysqli_real_escape_string($conn, $_POST["NewHouseName"]);

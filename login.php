@@ -9,15 +9,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $password = mysqli_real_escape_string($conn, $_POST["Password"]);
     $sql = "SELECT  userID, Username, Password FROM user WHERE Username = '$username'";
     $result = mysqli_query($conn, $sql);
-    if ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
-        $decryptpassword = password_verify($password, $row['Password']);
-        if ($decryptpassword == false) {
-            header("Location: index.php?login=error");
-            $info = ("Your username or password is incorrect");
-        } elseif ($decryptpassword == true) {
-            $_SESSION['login_user'] = $row['userID'];
-            header("location: index.php");
-        }
+    $hashedpassword = $row['Password'];
+    $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
+    if (password_verify($password, $hashedpassword)) {
+        header("Location: index.php?login=error");
+        $info = ("Your username or password is incorrect");
+    } else {
+        $_SESSION['login_user'] = $row['userID'];
+        header("location: index.php");
     }
 }
+
 ?>

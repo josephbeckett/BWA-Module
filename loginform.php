@@ -9,11 +9,11 @@
                     <input type="password" class="form-control" name="Password" placeholder="Password">
                 </div>
                 <div class="form-group col-md-12">
-                    <button type="submit" class="btn btn-primary">Sign in</button>
+                    <button type="submit" name="Login" class="btn btn-primary">Sign in</button>
                 </div>
-                <div class="form-group col-md-12">
+                <!-- <div class="form-group col-md-12">
                     <h1 class="login-error-text"><?php echo $info; ?></h1>
-                </div>
+                </div> -->
             </div>
         </form>
     </div>

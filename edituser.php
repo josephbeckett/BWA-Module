@@ -1,5 +1,5 @@
 <?php
-include('updateuser.php');
+include('session.php');
 ?>
 
 <!DOCTYPE html>
@@ -13,7 +13,7 @@ include('updateuser.php');
 </head>
 
 <body>
-    <form method="post">
+    <form name="updateform" method="post">
         <input type="text" name="NewUsername" value="<?php echo $row["Username"] ?>">
         <input type="email" name="NewEmail" value="<?php echo $row["Email"] ?>">
         <input type="text" name="NewHouseName" value="<?php echo $row["House_Name"] ?>">

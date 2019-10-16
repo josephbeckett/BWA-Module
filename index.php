@@ -1,9 +1,10 @@
 <?php
-include("login.php");
+    include("login.php");
 
-if (isset($_POST['search'])) {
-    require "carsearch.php";
-} ?>
+    if(isset($_SESSION['login_user'])) {
+        header('location: carsearch.php');
+    }
+?>
 <html lang="en">
 
 <head>
@@ -25,20 +26,8 @@ if (isset($_POST['search'])) {
 
 
 
-    if (isset($_SESSION["login_user"])) {
-        include('searchform.php');
-    } else {
+    if (!isset($_SESSION["login_user"])) {
         include('loginform.php');
-    }
-
-    if (isset($_POST['search'])) {
-    if (count($results) > 0) {
-    foreach ($results as $r) {
-    printf("<div>%s - %s</div>", $r['name'], $r['email']);
-    }
-    } else {
-    echo "No results found";
-    }
     }
     ?>
 
