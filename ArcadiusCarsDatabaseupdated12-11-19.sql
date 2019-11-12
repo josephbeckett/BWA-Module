@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Oct 21, 2019 at 08:27 PM
+-- Generation Time: Nov 12, 2019 at 03:28 PM
 -- Server version: 10.1.36-MariaDB
 -- PHP Version: 7.2.11
 
@@ -107,8 +107,8 @@ CREATE TABLE `User` (
 --
 
 INSERT INTO `User` (`userID`, `Username`, `Password`, `Email`, `House_Name`, `Address_Line_1`, `Address_Line_2`, `Postcode`, `Date_Of_Birth`, `Phone_Number`) VALUES
-(1, 'Joe', '$2y$10$KToPbW9Wtsg3BqfoEbZXI.s/WEbu/lvF2b8DFc44e2cgPwsVolCoS', 'joseph.beckett1999@gmail.com', '22', 'Kingswood Drive', 'Norton Canes', 'WS119TR', '1999-06-21', '07383555132'),
-(2, 'Josh', '$2y$10$UgXcdTnii2s3ELFCgPASt.tv8qfNcG6tLM2xy0e7KYWbq8chZc.MW', 'qedbhwqdbwqihd@gmail.com', '23', 'Hall Lane', 'Great Wyrley', 'Walsall', '1999-08-24', '07734125432'),
+(1, 'Joe', '$2y$10$KToPbW9Wtsg3BqfoEbZXI.s/WEbu/lvF2b8DFc44e2cgPwsVolCoS', 'joseph.beckett1999@gmail.com', '22', 'Kingswood Drive', 'Norton Canes', 'WS119TR', '1999-06-21', '01231231231'),
+(2, 'Josh', '$2y$10$UgXcdTnii2s3ELFCgPASt.tv8qfNcG6tLM2xy0e7KYWbq8chZc.MW', 'qedbhwqdbwqihd@gmail.com', '23', 'Hall Lane', 'Great Wyrley', 'Walsall', '1999-08-24', '03123214554'),
 (3, 'Ben', '$2y$10$XbJpzz1s/LtlomztcsTSH.IiHQC7ZMO1pB8LrP3Z5bnBDVEVQcETm', 'ben@ben.com', '', '', '', '', '0000-00-00', '');
 
 --
