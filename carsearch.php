@@ -59,12 +59,12 @@ include("session.php");
                 }
             } else if (isset($_POST['favourite-search'])) {
                 $userID = $_SESSION['userID'];
-                $search = "SELECT * FROM Cars INNER JOIN Favourites ON Favourites.carID = Cars.carID WHERE Favourites.userID = $userID";
+                $search = "SELECT * FROM Favourites INNER JOIN Cars ON Favourites.carID = Cars.carID WHERE Favourites.userID = $userID";
                 $searchresult = mysqli_query($conn, $search);
                 $searchrow = mysqli_num_rows($searchresult);
                 if ($searchrow >= 1) {
-                    while ($row = mysqli_fetch_assoc($searchresult)) {      
-                        include("cardisplayform.php");  
+                    while ($row = mysqli_fetch_assoc($searchresult)) {
+                        include("cardisplayform.php");
                     }
                 } else {
                     echo '

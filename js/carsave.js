@@ -1,42 +1,41 @@
 $(document).ready(function () {
-    var path = window.location.pathname;
-    var page = path.split("/").pop();
-
-    
-    $('.favourite').on('click', function () {
-        var carID = $(this).data('id');
-        $car = $(this);
+    // when the user clicks on like
+    $('.like').on('click', function () {
+        var postid = $(this).data('id');
+        $post = $(this);
 
         $.ajax({
-            url: page,
+            url: 'index.php',
             type: 'post',
             data: {
-                'favourite': 1,
-                'carID': carID
+                'liked': 1,
+                'postid': postid
             },
             success: function (response) {
-                $car.addClass('hidden');
-                $car.siblings().removeClass('hidden');
+                $post.parent().find('span.likes_count').text(response + " likes");
+                $post.addClass('hide');
+                $post.siblings().removeClass('hide');
             }
         });
     });
 
-    $('.unfavourite').on('click', function () {
-        var carID = $(this).data('id');
-        $car = $(this);
+    // when the user clicks on unlike
+    $('.unlike').on('click', function () {
+        var postid = $(this).data('id');
+        $post = $(this);
 
         $.ajax({
-            url: page,
+            url: 'index.php',
             type: 'post',
             data: {
-                'unfavourite': 1,
-                'carID': carID
+                'unliked': 1,
+                'postid': postid
             },
             success: function (response) {
-                $car.addClass('hidden');
-                $car.siblings().removeClass('hidden');
+                $post.parent().find('span.likes_count').text(response + " likes");
+                $post.addClass('hide');
+                $post.siblings().removeClass('hide');
             }
         });
     });
 });
-
