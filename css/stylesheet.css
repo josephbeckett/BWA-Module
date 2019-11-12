@@ -115,6 +115,9 @@ html, body{
     font-size: 22px;
 }
 
+.hidden {
+    display: hidden;
+}
 
 
 @media all and (max-width: 990px) {
