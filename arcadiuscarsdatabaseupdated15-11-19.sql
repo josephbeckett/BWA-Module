@@ -2,8 +2,8 @@
 -- version 4.8.3
 -- https://www.phpmyadmin.net/
 --
--- Host: localhost
--- Generation Time: Nov 12, 2019 at 03:28 PM
+-- Host: 127.0.0.1
+-- Generation Time: Nov 15, 2019 at 10:14 PM
 -- Server version: 10.1.36-MariaDB
 -- PHP Version: 7.2.11
 
@@ -19,16 +19,16 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `ArcadiusCarsDatabase`
+-- Database: `arcadiuscarsdatabase`
 --
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `Cars`
+-- Table structure for table `cars`
 --
 
-CREATE TABLE `Cars` (
+CREATE TABLE `cars` (
   `carID` int(5) NOT NULL,
   `Make` varchar(50) NOT NULL,
   `Model` varchar(50) NOT NULL,
@@ -41,10 +41,10 @@ CREATE TABLE `Cars` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `Cars`
+-- Dumping data for table `cars`
 --
 
-INSERT INTO `Cars` (`carID`, `Make`, `Model`, `Fuel_Type`, `Year`, `Engine_Size`, `Colour`, `Picture`, `Date_Uploaded`) VALUES
+INSERT INTO `cars` (`carID`, `Make`, `Model`, `Fuel_Type`, `Year`, `Engine_Size`, `Colour`, `Picture`, `Date_Uploaded`) VALUES
 (1, 'Ford', 'GT', 'Petrol', '2005', '5.4', 'Red', 'assets/editedfordgt2008.jpeg', '2019-07-26'),
 (2, 'Ford', 'KA', 'Petrol', '2011', '1.2', 'Blue', 'assets/carstockimg.jpg', '2019-02-27'),
 (3, 'Ford', 'Fiesta', 'Petrol', '2015', '1.6', 'Silver', 'assets/carstockimg.jpg', '2019-10-16'),
@@ -67,29 +67,43 @@ INSERT INTO `Cars` (`carID`, `Make`, `Model`, `Fuel_Type`, `Year`, `Engine_Size`
 -- --------------------------------------------------------
 
 --
--- Table structure for table `Favourites`
+-- Table structure for table `favourites`
 --
 
-CREATE TABLE `Favourites` (
+CREATE TABLE `favourites` (
   `favID` int(5) NOT NULL,
   `userID` int(5) NOT NULL,
   `carID` int(5) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+-- --------------------------------------------------------
+
 --
--- Dumping data for table `Favourites`
+-- Table structure for table `recentsearch`
 --
 
-INSERT INTO `Favourites` (`favID`, `userID`, `carID`) VALUES
-(1, 1, 4);
+CREATE TABLE `recentsearch` (
+  `searchID` int(8) NOT NULL,
+  `userID` int(4) NOT NULL,
+  `searchQuery` varchar(255) NOT NULL,
+  `amountSearched` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `recentsearch`
+--
+
+INSERT INTO `recentsearch` (`searchID`, `userID`, `searchQuery`, `amountSearched`) VALUES
+(1, 1, 'Ford', '2'),
+(23, 1, 'Cit', '3');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `User`
+-- Table structure for table `user`
 --
 
-CREATE TABLE `User` (
+CREATE TABLE `user` (
   `userID` int(5) NOT NULL,
   `Username` varchar(20) NOT NULL,
   `Password` varchar(255) NOT NULL,
@@ -103,10 +117,10 @@ CREATE TABLE `User` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `User`
+-- Dumping data for table `user`
 --
 
-INSERT INTO `User` (`userID`, `Username`, `Password`, `Email`, `House_Name`, `Address_Line_1`, `Address_Line_2`, `Postcode`, `Date_Of_Birth`, `Phone_Number`) VALUES
+INSERT INTO `user` (`userID`, `Username`, `Password`, `Email`, `House_Name`, `Address_Line_1`, `Address_Line_2`, `Postcode`, `Date_Of_Birth`, `Phone_Number`) VALUES
 (1, 'Joe', '$2y$10$KToPbW9Wtsg3BqfoEbZXI.s/WEbu/lvF2b8DFc44e2cgPwsVolCoS', 'joseph.beckett1999@gmail.com', '22', 'Kingswood Drive', 'Norton Canes', 'WS119TR', '1999-06-21', '01231231231'),
 (2, 'Josh', '$2y$10$UgXcdTnii2s3ELFCgPASt.tv8qfNcG6tLM2xy0e7KYWbq8chZc.MW', 'qedbhwqdbwqihd@gmail.com', '23', 'Hall Lane', 'Great Wyrley', 'Walsall', '1999-08-24', '03123214554'),
 (3, 'Ben', '$2y$10$XbJpzz1s/LtlomztcsTSH.IiHQC7ZMO1pB8LrP3Z5bnBDVEVQcETm', 'ben@ben.com', '', '', '', '', '0000-00-00', '');
@@ -116,23 +130,30 @@ INSERT INTO `User` (`userID`, `Username`, `Password`, `Email`, `House_Name`, `Ad
 --
 
 --
--- Indexes for table `Cars`
+-- Indexes for table `cars`
 --
-ALTER TABLE `Cars`
+ALTER TABLE `cars`
   ADD PRIMARY KEY (`carID`);
 
 --
--- Indexes for table `Favourites`
+-- Indexes for table `favourites`
 --
-ALTER TABLE `Favourites`
+ALTER TABLE `favourites`
   ADD PRIMARY KEY (`favID`),
   ADD KEY `userID` (`userID`),
   ADD KEY `carID` (`carID`);
 
 --
--- Indexes for table `User`
+-- Indexes for table `recentsearch`
 --
-ALTER TABLE `User`
+ALTER TABLE `recentsearch`
+  ADD PRIMARY KEY (`searchID`),
+  ADD KEY `userID` (`userID`);
+
+--
+-- Indexes for table `user`
+--
+ALTER TABLE `user`
   ADD PRIMARY KEY (`userID`);
 
 --
@@ -140,21 +161,27 @@ ALTER TABLE `User`
 --
 
 --
--- AUTO_INCREMENT for table `Cars`
+-- AUTO_INCREMENT for table `cars`
 --
-ALTER TABLE `Cars`
+ALTER TABLE `cars`
   MODIFY `carID` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
--- AUTO_INCREMENT for table `Favourites`
+-- AUTO_INCREMENT for table `favourites`
 --
-ALTER TABLE `Favourites`
-  MODIFY `favID` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+ALTER TABLE `favourites`
+  MODIFY `favID` int(5) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `User`
+-- AUTO_INCREMENT for table `recentsearch`
 --
-ALTER TABLE `User`
+ALTER TABLE `recentsearch`
+  MODIFY `searchID` int(8) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
+
+--
+-- AUTO_INCREMENT for table `user`
+--
+ALTER TABLE `user`
   MODIFY `userID` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
@@ -162,11 +189,17 @@ ALTER TABLE `User`
 --
 
 --
--- Constraints for table `Favourites`
+-- Constraints for table `favourites`
 --
-ALTER TABLE `Favourites`
-  ADD CONSTRAINT `favourites_ibfk_1` FOREIGN KEY (`userID`) REFERENCES `User` (`userID`),
-  ADD CONSTRAINT `favourites_ibfk_2` FOREIGN KEY (`carID`) REFERENCES `Cars` (`carID`);
+ALTER TABLE `favourites`
+  ADD CONSTRAINT `favourites_ibfk_1` FOREIGN KEY (`userID`) REFERENCES `user` (`userID`),
+  ADD CONSTRAINT `favourites_ibfk_2` FOREIGN KEY (`carID`) REFERENCES `cars` (`carID`);
+
+--
+-- Constraints for table `recentsearch`
+--
+ALTER TABLE `recentsearch`
+  ADD CONSTRAINT `recentsearch_ibfk_1` FOREIGN KEY (`userID`) REFERENCES `user` (`userID`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

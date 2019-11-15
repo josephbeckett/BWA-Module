@@ -48,8 +48,26 @@ include("session.php");
                 }
             } else if (isset($_POST['submit-search'])) {
                 $search = mysqli_real_escape_string($conn, $_POST['search']);
+                // check if query is already saved
+                $recentsql = "SELECT * FROM recentsearch WHERE userID='$userID' AND searchQuery='$search';";
+                $searchresults = mysqli_query($conn, $recentsql);
+                $resultCheck = mysqli_num_rows($searchresults);
+                if ($resultCheck > 0) {
+                  // increment the frequency column
+                  if ($searchrow = mysqli_fetch_assoc($searchresults)) {
+                    $amount = $searchrow['amountSearched'] + 1;
+                    $update_sql = "UPDATE recentsearch SET amountSearched='$amount' WHERE searchQuery='$search' AND userID='$userID';";
+                    mysqli_query($conn, $update_sql);
+                  } else {
+                    header("location: carsearch.php?amount".$amount);
+                  }
+                } else {
+                  // add query to database
+                  $insert_sql = "INSERT INTO recentsearch (userID, searchQuery, amountSearched) VALUES ('$userID', '$search', '1');";
+                  mysqli_query($conn, $insert_sql);
+                }
                 $sql = "SELECT * FROM Cars WHERE Make LIKE '%$search%' OR Model LIKE '%$search%' OR Fuel_Type LIKE '%$search%'
-                                OR Year LIKE '%$search%' OR Engine_Size LIKE '%$search%' OR Colour LIKE '%$search%'";
+                OR Year LIKE '%$search%' OR Engine_Size LIKE '%$search%' OR Colour LIKE '%$search%'";
                 $results = mysqli_query($conn, $sql);
                 $queryResult = mysqli_num_rows($results);
                 if ($queryResult > 0) {
