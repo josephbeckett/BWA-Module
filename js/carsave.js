@@ -1,40 +1,38 @@
 $(document).ready(function () {
     // when the user clicks on like
-    $('.like').on('click', function () {
-        var postid = $(this).data('id');
-        $post = $(this);
+    $('.favourite').on('click', function () {
+        var carID = $(this).data('id');
+        $carbutton = $(this);
 
         $.ajax({
-            url: 'index.php',
+            url: 'carsearch.php',
             type: 'post',
             data: {
-                'liked': 1,
-                'postid': postid
+                'favourite': 1,
+                'selectcar': carID
             },
             success: function (response) {
-                $post.parent().find('span.likes_count').text(response + " likes");
-                $post.addClass('hide');
-                $post.siblings().removeClass('hide');
+                $carbutton.addClass('hidden');
+                $carbutton.siblings().removeClass('hidden');
             }
         });
     });
 
     // when the user clicks on unlike
-    $('.unlike').on('click', function () {
-        var postid = $(this).data('id');
-        $post = $(this);
+    $('.unfavourite').on('click', function () {
+        var carID = $(this).data('id');
+        $carbutton = $(this);
 
         $.ajax({
-            url: 'index.php',
+            url: 'carsearch.php',
             type: 'post',
             data: {
-                'unliked': 1,
-                'postid': postid
+                'unfavourite': 1,
+                'selectcar': carID
             },
             success: function (response) {
-                $post.parent().find('span.likes_count').text(response + " likes");
-                $post.addClass('hide');
-                $post.siblings().removeClass('hide');
+                $carbutton.addClass('hidden');
+                $carbutton.siblings().removeClass('hidden');
             }
         });
     });

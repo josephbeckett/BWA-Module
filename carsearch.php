@@ -1,5 +1,6 @@
 <?php
 include("session.php");
+// $favresults = mysqli_query($conn, "SELECT * FROM Favourites WHERE userID=$userID AND carID=" . $carrow['carID'] . "");
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -19,7 +20,8 @@ include("session.php");
 
 <body>
     <?php
-    include "navbar.php"
+    include "navbar.php";
+    include "savecar.php";
     ?>
     <div class="container">
         <div class="row">
@@ -58,7 +60,6 @@ include("session.php");
                     echo 'no results match your search';
                 }
             } else if (isset($_POST['favourite-search'])) {
-                $userID = $_SESSION['userID'];
                 $search = "SELECT * FROM Favourites INNER JOIN Cars ON Favourites.carID = Cars.carID WHERE Favourites.userID = $userID";
                 $searchresult = mysqli_query($conn, $search);
                 $searchrow = mysqli_num_rows($searchresult);
@@ -78,27 +79,11 @@ include("session.php");
         </div>
     </div>
 
-    <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-    <script src="js/all.js"></script>
     <script src="js/carsave.js"></script>
+    <script src="js/all.js"></script>
+
 </body>
 
 
 </html>
-
-
-<!-- // determine if user has already liked the vehicle
-// $results = mysqli_query($conn, "SELECT * FROM saved_vehicles WHERE id_user=$uid AND id_vehicle=".$row['idvehicle']."");
-// // if user has liked the vehicle echo this
-// if (mysqli_num_rows($results) == 1) {
-// echo '
-// <button data-id="'.$row['carID'].'" class="unlike btn btn-danger"><i class="fa fa-heart" aria-hidden="true"></i></button>
-// <button data-id="'.$row['carID'].'" class="like hidden btn btn-danger"><i class="fa fa-heart-o" aria-hidden="true"></i></i></button>
-// ';
-// } else {
-// echo '
-// <button data-id="'.$row['carID'].'" class="unlike hidden btn btn-danger"><i class="fa fa-heart" aria-hidden="true"></i></button>
-// <button data-id="'.$row['carID'].'" class="like btn btn-danger"><i class="fa fa-heart-o" aria-hidden="true"></i></i></button>
-// ';
-// } -->

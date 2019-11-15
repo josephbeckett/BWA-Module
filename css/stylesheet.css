@@ -11,7 +11,7 @@ html, body{
     z-index: 10;
 }
 
-.navbar-brand{ 
+.navbar-brand{
     color: rgb(24, 24, 218)!important;
 }
 .index-section {
@@ -35,7 +35,7 @@ html, body{
 }
 
 .index-form{
-    display: inline-block;  
+    display: inline-block;
     margin-left: auto;
     margin-right: auto;
     z-index: 20;
@@ -116,7 +116,7 @@ html, body{
 }
 
 .hidden {
-    display: hidden;
+    display: none;
 }
 
 
