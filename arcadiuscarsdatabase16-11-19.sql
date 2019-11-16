@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 15, 2019 at 10:14 PM
+-- Generation Time: Nov 16, 2019 at 06:34 PM
 -- Server version: 10.1.36-MariaDB
 -- PHP Version: 7.2.11
 
@@ -76,6 +76,14 @@ CREATE TABLE `favourites` (
   `carID` int(5) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+--
+-- Dumping data for table `favourites`
+--
+
+INSERT INTO `favourites` (`favID`, `userID`, `carID`) VALUES
+(2, 1, 12),
+(3, 1, 11);
+
 -- --------------------------------------------------------
 
 --
@@ -86,16 +94,19 @@ CREATE TABLE `recentsearch` (
   `searchID` int(8) NOT NULL,
   `userID` int(4) NOT NULL,
   `searchQuery` varchar(255) NOT NULL,
-  `amountSearched` varchar(255) NOT NULL
+  `amountSearched` varchar(255) NOT NULL,
+  `timeSearched` timestamp(6) NOT NULL DEFAULT CURRENT_TIMESTAMP(6) ON UPDATE CURRENT_TIMESTAMP(6)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `recentsearch`
 --
 
-INSERT INTO `recentsearch` (`searchID`, `userID`, `searchQuery`, `amountSearched`) VALUES
-(1, 1, 'Ford', '2'),
-(23, 1, 'Cit', '3');
+INSERT INTO `recentsearch` (`searchID`, `userID`, `searchQuery`, `amountSearched`, `timeSearched`) VALUES
+(1, 1, 'Ford', '3', '2019-11-16 12:45:26.000000'),
+(23, 1, 'Cit', '3', '2019-11-16 11:41:24.584591'),
+(24, 1, 'Tesla', '4', '2019-11-16 12:44:52.000000'),
+(25, 1, 'Fo', '1', '2019-11-16 11:47:08.106546');
 
 -- --------------------------------------------------------
 
@@ -170,13 +181,13 @@ ALTER TABLE `cars`
 -- AUTO_INCREMENT for table `favourites`
 --
 ALTER TABLE `favourites`
-  MODIFY `favID` int(5) NOT NULL AUTO_INCREMENT;
+  MODIFY `favID` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `recentsearch`
 --
 ALTER TABLE `recentsearch`
-  MODIFY `searchID` int(8) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
+  MODIFY `searchID` int(8) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
 
 --
 -- AUTO_INCREMENT for table `user`
