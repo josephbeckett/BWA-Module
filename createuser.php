@@ -25,3 +25,23 @@
 
     }
 ?>
+
+
+<!-- if (!preg_match("/^[a-zA-Z ]+$/",$myfirstname)) {
+$error = true;
+$name_error = "Name must contain only alphabets and space";
+}
+
+if (!preg_match("/^[a-zA-Z ]+$/",$mylastname)) {
+  $error = true;
+  $name_error = "Name must contain only alphabets and space";
+}
+
+if($mypassword != $myrpassword) {
+  $error = true;
+  $rpassword_error = "Password and Confirm Password doesn't match";
+
+if(!filter_var($myemail,FILTER_VALIDATE_EMAIL)) {
+ $error = true;
+  $email_error = "Please Enter Valid Email ID";
+} -->

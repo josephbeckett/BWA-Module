@@ -34,8 +34,11 @@ include("session.php");
     </div>
     <div class="row">
       <div class="recent-box">
+        <div class="row">
+
+
           <?php
-          $recentsearches = "SELECT * FROM recentsearch WHERE userID = $userID ORDER BY amountSearched DESC LIMIT 5";
+          $recentsearches = "SELECT * FROM recentsearch WHERE userID = $userID ORDER BY timeSearched DESC LIMIT 5";
           $rsq = mysqli_query($conn, $recentsearches);
           $rsqr = mysqli_num_rows($rsq);
           if ($rsqr > 0) {
@@ -48,6 +51,7 @@ include("session.php");
             }
           }
           ?>
+        </div>
       </div>
     </div>
     <div class="row">
@@ -74,7 +78,8 @@ include("session.php");
             // increment the frequency column
             if ($searchrow = mysqli_fetch_assoc($searchresults)) {
               $amount = $searchrow['amountSearched'] + 1;
-              $update_sql = "UPDATE recentsearch SET amountSearched='$amount' WHERE searchQuery='$search' AND userID='$userID';";
+              $searchtime = date("Y/m/d h:i:sa");
+              $update_sql = "UPDATE recentsearch SET amountSearched='$amount', timeSearched='$searchtime' WHERE searchQuery='$search' AND userID='$userID';";
               mysqli_query($conn, $update_sql);
             } else {
               header("location: carsearch.php?amount".$amount);
