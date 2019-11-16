@@ -14,27 +14,30 @@
               <p class="card-text">Year Produced:  ' . $row['Year'] . '</p>
               <p class="card-text">Engine Size: ' . $row['Engine_Size'] . '</p>
               <p class="card-text">Car Colour: ' . $row['Colour'] . '</p>
-              ';
+              <p class="card-text">favourite: ';
               $favresults = mysqli_query($conn, "SELECT * FROM Favourites WHERE userID=$userID AND carID=".$row['carID']."");
               if (mysqli_num_rows($favresults) == 1) {
                   echo '
-                  <button data-id="' . $row["carID"] . '" class="btn btn-primary favourite-button favourite hidden" type="submit" name="favourite-btn"><i class="fas fa-check"></i></button>
-                  <button data-id="' . $row["carID"] . '" class="btn btn-danger favourite-button unfavourite" type="submit" name="favourite-btn"><i class="far fa-times-circle"></i></button>
+                  <button data-id="' . $row["carID"] . '" class="btn btn-primary favourite-button favourite hidden" type="submit" name="favourite-btn">No</button>
+                  <button data-id="' . $row["carID"] . '" class="btn btn-danger favourite-button unfavourite" type="submit" name="favourite-btn">Yes</button>
               ';
               } else {
                   echo '
-                  <button data-id="' . $row["carID"] .'" class="btn btn-primary favourite-button favourite" type="submit" name="favourite-btn"><i class="fas fa-check"></i></button>
-                  <button data-id="'. $row["carID"] .'" class="btn btn-danger favourite-button unfavourite hidden" type="submit" name="favourite-btn"><i class="far fa-times-circle"></i></button>
+                  <button data-id="' . $row["carID"] .'" class="btn btn-primary favourite-button favourite" type="submit" name="favourite-btn">No</button>
+                  <button data-id="'. $row["carID"] .'" class="btn btn-danger favourite-button unfavourite hidden" type="submit" name="favourite-btn">Yes</button>
                   ';
               }
-              echo '
+              echo '</p>
+          </div>
+          <div class="card-footer">
+              <small class="text-muted">' . $formattedcaruploadeddate . '</small>
           </div>
       </div>
   </div>';
 ?>
 
 
-<!--
-        <div class="card-footer">
-            <small class="text-muted">' . $formattedcaruploadeddate . '</small>
-        </div>  -->
+<!-- <i class="fas fa-check"></i>
+<i class="far fa-times-circle"></i>
+
+ -->

@@ -90,7 +90,6 @@ html, body{
 .car-search-box {
     text-align: center;
     display: block;
-    padding-bottom: 30px;
     width: 100%;
 }
 
@@ -102,17 +101,19 @@ html, body{
 
 }
 
-.car-search-input {
-    padding: 0px 20px;
-    width: 300px;
-    height: 40px;
-    font-size: 22px;
+.car-search-input, .car-search-button, .car-favourite-button {
+  font-size: 18px;
+  -moz-box-sizing: content-box;
+  -webkit-box-sizing: content-box;
+  box-sizing: content-box;
 }
 
-.car-search-button {
-    width: 100px;
-    height: 44px;
-    font-size: 22px;
+.recent-box {
+
+}
+
+.badge {
+  font-size: 20px;
 }
 
 .hidden {
