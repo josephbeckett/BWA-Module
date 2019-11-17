@@ -115,6 +115,10 @@ html, body{
   width: 100%;
 }
 
+.container {
+  width: 80vw!important;
+}
+
 .badge {
   font-size: 20px;
 }
