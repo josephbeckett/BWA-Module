@@ -25,6 +25,20 @@ include("session.php");
   <div class="container">
     <div class="row">
       <div class='car-search-box'>
+        <div class=" btn-group btn-group-sm" role="group" aria-label="Basic example">
+          <?php
+          $recentsearches = "SELECT * FROM recentsearch WHERE userID = $userID ORDER BY timeSearched DESC LIMIT 5";
+          $rsq = mysqli_query($conn, $recentsearches);
+          $rsqr = mysqli_num_rows($rsq);
+          if ($rsqr > 0) {
+            while ($rsqrow  = mysqli_fetch_assoc($rsq)) {
+              echo'
+              <button type="button" class="btn btn-secondary">'. $rsqrow['searchQuery'] .'</button>
+              ';
+            }
+          }
+          ?>
+        </div>
         <form class="car-search-form" action="carsearch.php" method="POST">
           <input class="car-search-input" type="text" name="search" placeholder="Search for a car">
           <button class="car-search-button" type="submit" name="submit-search">Search</button>
@@ -33,26 +47,9 @@ include("session.php");
       </div>
     </div>
     <div class="row">
-      <div class="recent-box">
-        <div class="row">
 
 
-          <?php
-          $recentsearches = "SELECT * FROM recentsearch WHERE userID = $userID ORDER BY timeSearched DESC LIMIT 5";
-          $rsq = mysqli_query($conn, $recentsearches);
-          $rsqr = mysqli_num_rows($rsq);
-          if ($rsqr > 0) {
-            while ($rsqrow  = mysqli_fetch_assoc($rsq)) {
-              echo'
-              <div class="mb-2">
-              <span class="badge badge-pill badge-info">'. $rsqrow['searchQuery'] .'</span>
-              </div>
-              ';
-            }
-          }
-          ?>
-        </div>
-      </div>
+
     </div>
     <div class="row">
       <?php
