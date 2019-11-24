@@ -4,9 +4,9 @@
   $carimage = $row['Picture'];
   // include_once('savecar.php');
   echo '
-  <div class="col-lg-3 col-md-4 col-sm-6 mb-2">
-      <div class="card">
-          <img class="card-img-top" src="' . $row['Picture'] . '" alt="Card image cap">
+  <div class="col-lg-3 col-md-4 col-sm-6 mb-3">
+    <div class="card border-info">
+          <img class="card-img-top img-hover-test" id="img-hover-test" src="' . $row['Picture'] . '" alt="Card image cap">
           <div class="card-body">
               <h5 class="card-title"> ' . $row['Make'] . '</h5>
               <p class="card-text">Model: ' . $row['Model'] . '</p>
@@ -30,7 +30,7 @@
               echo '</p>
           </div>
           <div class="card-footer">
-              <small class="text-muted">' . $formattedcaruploadeddate . '</small>
+              <small class="text-muted">Date Uploaded: ' . $formattedcaruploadeddate . '</small>
           </div>
       </div>
   </div>';

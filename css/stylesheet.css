@@ -15,7 +15,7 @@ html, body{
     color: rgb(24, 24, 218)!important;
 }
 .index-section {
-    background-image: url('../assets/index-background-3.jpg');
+    background-color: #ddd;
     height: 100vh;
     width: 100vw;
     position: relative;
@@ -23,6 +23,7 @@ html, body{
     background-attachment: fixed;
     background-position: center;
     background-size: cover;
+    overflow: hidden;
 }
 
 .index-box{
@@ -30,8 +31,7 @@ html, body{
     display: block;
     z-index: 15;
     padding-top: 200px;
-    color:rgb(255, 255, 255);
-    text-shadow: 2px 4px 4px rgb(0, 0, 0);
+    color: #000000;
 }
 
 .index-form{
@@ -46,13 +46,8 @@ html, body{
     display: block;
     z-index: 15;
     padding-top: 100px;
-    color: rgb(255, 255, 255);
+    color: #000000;
     background-size: cover;
-    /* background-color: rgba(0, 0, 0, 0.5); */
-}
-
-#profile-info > h1 {
-    text-shadow: 2px 4px 4px rgb(0, 0, 0);
 }
 
 .login-error-text {
@@ -81,6 +76,11 @@ html, body{
     background-color: rgb(54, 181, 219);
 }
 
+.column-2 {
+  background-color: #eee;
+}
+
+
 .car-search-container {
     width: 900;
     background-color: #fff;
@@ -92,21 +92,66 @@ html, body{
     display: block;
     width: 100%;
     margin-bottom: 20px;
+    padding: 0px;
 }
 
-.car-search-form {
-    display: inline-block;
-    margin-left: auto;
-    margin-right: auto;
-    margin-top: 20px;
-
+.input-group-search {
+  margin-right: 15px;
+    width: 100%;
 }
 
-.car-search-input, .car-search-button, .car-favourite-button {
-  font-size: 18px;
+.car-search-input {
+  border-color: green;
+  border-width: 1px;
+  vertical-align: middle;
   -moz-box-sizing: content-box;
   -webkit-box-sizing: content-box;
   box-sizing: content-box;
+}
+
+.car-search-input:hover {
+  background-color: rgb(203, 232, 237);
+}
+
+.car-search-button {
+  border-style: solid;
+  border-color: green;
+  border-width: 1px;
+  vertical-align: middle;
+  width: auto;
+}
+
+.car-search-button:hover {
+  background-color: rgb(54, 164, 161);
+}
+
+.car-favourite-button {
+  border-style: solid;
+  border-color: green;
+  border-width: 1px;
+  vertical-align: middle;
+}
+
+.btn-update {
+  border-style: solid;
+  border-color: blue;
+  border-width: 1px;
+}
+
+.btn-update:hover {
+  background-color: #59f7ab;
+}
+
+.car-favourite-button:hover {
+  background: rgb(55, 157, 232);
+}
+
+.btn {
+  vertical-align: middle!important;
+}
+
+.img-hover-test {
+  transition: all 2s;
 }
 
 .recent-box {

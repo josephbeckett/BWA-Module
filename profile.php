@@ -23,8 +23,8 @@ include("session.php");
     <div class="index-section">
         <div class="profile-box">
             <div class="container" id="profile-info">
-                <h1><?php echo $row["Username"]; ?></h1>
-                <h1><?php
+                <h1>Username: <?php echo $row["Username"]; ?></h1>
+                <h1>House Number or Name: <?php
                     if ($row["House_Name"] == "") {
                         echo "House Name or Number not supplied";
                     } else {
@@ -32,7 +32,7 @@ include("session.php");
                     }
 
                     ?></h1>
-                <h1><?php
+                <h1>Address Line 1: <?php
                     if ($row["Address_Line_1"] == "") {
                         echo "Address Line 1 not supplied";
                     } else {
@@ -40,21 +40,21 @@ include("session.php");
                     }
                     ?></h1>
 
-                <h1><?php
+                <h1>Address Line 2: <?php
                     if ($row["Address_Line_2"] == "") {
                         echo "Address Line 2 not supplied";
                     } else {
                         echo $row["Address_Line_2"];
                     }
                     ?></h1>
-                <h1><?php
+                <h1>Postcode: <?php
                     if ($row["Postcode"] == "") {
                         echo "Postcode not supplied";
                     } else {
                         echo $row["Postcode"];
                     }
                     ?></h1>
-                <h1><?php
+                <h1>Date of Birth: <?php
                     if ($row["Date_Of_Birth"] == "0000-00-00") {
                         echo "Date of birth not supplied";
                     } else {
@@ -62,7 +62,7 @@ include("session.php");
                         echo $formatteddateofbirth;
                     }
                     ?></h1>
-                <h1><?php
+                <h1>Phone Number: <?php
                     if ($row["Phone_Number"] == "0") {
                         echo "Phone number not supplied";
                     } else {
@@ -71,7 +71,7 @@ include("session.php");
 
                     ?></h1>
                 <form action="edituser.php">
-                    <input type="submit" value="Update User Details" />
+                    <input class="btn btn-update" type="submit" value="Update User Details" />
                 </form>
             </div>
         </div>

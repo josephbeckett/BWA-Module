@@ -6,6 +6,8 @@
         <a class="navbar-brand"><img width="30" height="30" src="assets/Web Icon.png" alt=""></a>
         <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
             <?php
+            $searchtime = date("G:i:sa");
+
             if (isset($_SESSION["login_user"])) {
                 echo '
             <li class="nav-item">
