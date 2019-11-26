@@ -25,7 +25,7 @@ include("session.php");
   <div class="container-fluid">
     <div class="row">
       <div class="col-md-2 column-2">
-        <div class="list-group mb-2 mt-2">
+        <div class="list-group mb-2 mt-2 sticky-group">
           <a href="#" class="list-group-item list-group-item-action active">Recent searches</a>
           <?php
           $rsbt = "SELECT * FROM recentsearch WHERE userID = $userID ORDER BY timeSearched DESC LIMIT 5";
@@ -39,8 +39,6 @@ include("session.php");
             }
           }
           ?>
-        </div>
-        <div class="list-group">
           <a href="#" class="list-group-item list-group-item-action active"> Most Searched</a>
           <?php
           $recentsearches = "SELECT * FROM recentsearch WHERE userID = $userID ORDER BY amountSearched DESC LIMIT 5";
@@ -58,7 +56,7 @@ include("session.php");
       </div>
       <div class="col-sm-10 bg-light">
         <div class="row mt-2">
-            <form class="input-group input-group-search mb-2" action="carsearch.php" method="POST">
+            <form class="input-group input-group-search mb-2" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="POST">
               <input class="car-search-input form-control ml-3" type="text" name="search" placeholder="Search for a car">
               <div class="input-group-append">
                 <button class="car-search-button btn" type="submit" name="submit-search"><i class="fas fa-search"></i></button>
