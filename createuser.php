@@ -2,7 +2,7 @@
     include("config.php");
     session_start();
     $info = "";
-    if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    if (isset($_POST['submit-details'])) {
         // username and password sent from form
         $username = mysqli_real_escape_string($conn, $_POST["Username"]);
         $password = mysqli_real_escape_string($conn, $_POST["Password"]);

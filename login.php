@@ -1,6 +1,6 @@
 <?php
-include("config.php");
 session_start();
+include("config.php");
 ini_set('display_errors', 1);
 $info = "";
 if ($_SERVER["REQUEST_METHOD"] == "POST") {

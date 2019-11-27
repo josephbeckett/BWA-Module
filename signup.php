@@ -17,30 +17,14 @@
 </head>
 
 <body>
-    <nav class="navbar navbar-expand-lg">
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
-            <a class="navbar-brand"><img width="30" height="30" src="assets/Web Icon.png" alt=""></a>
-            <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-                <li class="nav-item active">
-                    <a class="nav-link" href="index.php">Home</a>
-                </li>
-                <li class="nav-item active">
-                    <a class="nav-link" href="signup.php">Sign Up</a>
-                </li>
-            </ul>
-            <!-- <form class="form-inline my-2 my-lg-0">
-                <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-            </form> -->
-        </div>
-    </nav>
+
+<?php
+  include('navbar.php');
+?>
 
     <div class="index-section">
         <div class="signup-box">
-            <form class="signup-form" action="" method="post">
+            <form class="signup-form" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="post">
                 <div class="form-row">
                     <div class="form-group col s6">
                         <input class="form-control" name="Username" type="text" placeholder="Username" required>
@@ -61,7 +45,7 @@
                         <input name="Email" type="email" class="form-control" placeholder="Email" required>
                     </div>
                 </div>
-                <button class="btn btn-primary" name="Submit" type="submit">Sign Up</button>
+                <button class="btn btn-primary" name="submit-details" type="submit">Sign Up</button>
             </form>
         </div>
     </div>
