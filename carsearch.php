@@ -26,6 +26,7 @@ include("session.php");
     <div class="row">
       <div class="col-md-2 column-2">
         <div class="list-group mb-2 mt-2 sticky-group">
+        
           <a href="#" class="list-group-item list-group-item-action active">Recent searches</a>
           <?php
           $rsbt = "SELECT * FROM recentsearch WHERE userID = $userID ORDER BY timeSearched DESC LIMIT 5";
@@ -65,7 +66,7 @@ include("session.php");
           </form>
           <?php
           if (!isset($_POST['submit-search']) && !isset($_POST['favourite-search'])) {
-            $carlist = 'SELECT * FROM Cars';
+            $carlist = 'SELECT * FROM cars';
             $carresults = mysqli_query($conn, $carlist);
             $queryResult = mysqli_num_rows($carresults);
             if ($queryResult > 0) {
@@ -94,15 +95,13 @@ include("session.php");
                   header("location: carsearch.php");
                 }
               } else {
-                $searchcheck = "SELECT searchQuery FROM recentsearch";
-                if ($search)
                 $searchtime = date("Y/m/d G:i:sa");
                 // add query to database
                 $insert_sql = "INSERT INTO recentsearch (userID, searchQuery, amountSearched, timeSearched) VALUES ('$userID', '$search', '1', '$searchtime');";
                 mysqli_query($conn, $insert_sql);
               }
               //searching database
-              $sql = "SELECT * FROM Cars WHERE Make LIKE '%$search%' OR Model LIKE '%$search%' OR Fuel_Type LIKE '%$search%'
+              $sql = "SELECT * FROM cars WHERE Make LIKE '%$search%' OR Model LIKE '%$search%' OR Fuel_Type LIKE '%$search%'
               OR Year LIKE '%$search%' OR Engine_Size LIKE '%$search%' OR Colour LIKE '%$search%'";
               $results = mysqli_query($conn, $sql);
               $queryResult = mysqli_num_rows($results);
@@ -115,7 +114,7 @@ include("session.php");
               }
             }
           } else if (isset($_POST['favourite-search'])) {
-            $search = "SELECT * FROM Favourites INNER JOIN Cars ON Favourites.carID = Cars.carID WHERE Favourites.userID = $userID";
+            $search = "SELECT * FROM favourites INNER JOIN cars ON favourites.carID = cars.carID WHERE favourites.userID = $userID";
             $searchresult = mysqli_query($conn, $search);
             $searchrow = mysqli_num_rows($searchresult);
             if ($searchrow >= 1) {

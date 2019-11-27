@@ -25,7 +25,6 @@
     include 'navbar.php';
 
 
-
     if (!isset($_SESSION["login_user"])) {
         include('loginform.php');
     }

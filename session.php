@@ -1,15 +1,16 @@
-  <?php
-  include("config.php");
+<?php
+  include_once("config.php");
+  ob_start();
   session_start();
   $user_check = $_SESSION["login_user"];
   $ses_sql = mysqli_query($conn,"SELECT * FROM user WHERE userID = '$user_check' ");
   $row = mysqli_fetch_array($ses_sql, MYSQLI_ASSOC);
 
-  $car_sql = mysqli_query($conn,"SELECT * FROM Cars");
+  $car_sql = mysqli_query($conn,"SELECT * FROM cars");
   $carrow = mysqli_fetch_array($car_sql, MYSQLI_ASSOC);
 
 
-  $fav_sql = mysqli_query($conn, "SELECT * FROM Favourites WHERE userID = '$user_check' ");
+  $fav_sql = mysqli_query($conn, "SELECT * FROM favourites WHERE userID = '$user_check' ");
   $favrow = mysqli_fetch_array($fav_sql, MYSQLI_ASSOC);
 
 

@@ -9,6 +9,7 @@ html, body{
     background-color: rgba(0, 0, 0, 0.5);
     width: 100vw;
     z-index: 10;
+    position: sticky;
 }
 
 .navbar-brand{
@@ -57,6 +58,7 @@ html, body{
 
 .signup-form {
     display: inline-table;
+    width: 300px;
     z-index: 20;
 }
 
@@ -96,7 +98,7 @@ html, body{
 
 .input-group-search {
   margin-right: 15px;
-  width: 100%;
+    width: 100%;
 }
 
 .car-search-input {

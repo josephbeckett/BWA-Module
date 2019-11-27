@@ -15,7 +15,7 @@
               <p class="card-text">Engine Size: ' . $row['Engine_Size'] . '</p>
               <p class="card-text">Car Colour: ' . $row['Colour'] . '</p>
               <p class="card-text">favourite: ';
-              $favresults = mysqli_query($conn, "SELECT * FROM Favourites WHERE userID=$userID AND carID=".$row['carID']."");
+              $favresults = mysqli_query($conn, "SELECT * FROM favourites WHERE userID=$userID AND carID=".$row['carID']."");
               if (mysqli_num_rows($favresults) == 1) {
                   echo '
                   <button data-id="' . $row["carID"] . '" class="btn btn-primary favourite-button favourite hidden" type="submit" name="favourite-btn">No</button>

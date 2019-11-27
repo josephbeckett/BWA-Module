@@ -18,12 +18,12 @@
 
 <body>
 
-<?php
-  include('navbar.php');
- ?>
+<?php 
+    include("navbar.php");
+?>
     <div class="index-section">
         <div class="signup-box">
-            <form class="signup-form" action="" method="post">
+            <form class="signup-form" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="post">
                 <div class="form-row">
                     <div class="form-group col s6">
                         <input class="form-control" name="Username" type="text" placeholder="Username" required>
@@ -31,20 +31,13 @@
                 </div>
                 <div class="form-row">
                     <div class="form-group col s6">
-                        <input class="form-control" id="password" name="Password" type="password" placeholder="Password" required aria-describedby="passwordHelpBlock">
-                        <small id="passwordHelpBlock" class="form-text text-muted">
-                          Your password must be 8-20 characters long, contain letters and numbers, and must not contain spaces, special characters, or emoji.
-                        </small>
-                    </div>
-                    <div class="form-group col s12">
-                        <input class="form-control" id="password" name="Repeatpassword" type="password" placeholder="Repeat Password" required aria-describedby="repeatPasswordHelpBlock">
-                        <small id="repeatPasswordHelpBlock" class="form-text text-muted">
-                          Your passwords must match.
-                        </small>
+                        <input class="form-control" id="password" name="Password" type="password" placeholder="Password" required>
                     </div>
                 </div>
                 <div class="form-row">
-
+                    <div class="form-group col s12">
+                        <input class="form-control" id="password" name="Repeatpassword" type="password" placeholder="Repeat Password" required>
+                    </div>
                 </div>
                 <div class="form-row">
                     <div class="form-group col s12">

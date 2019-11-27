@@ -1,9 +1,9 @@
 <?php
-include("config.php");
 session_start();
+include("config.php");
 ini_set('display_errors', 1);
 $info = "";
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
+if (isset($_POST['login'])) {
     // username and password sent from form
     $username = mysqli_real_escape_string($conn, $_POST["Username"]);
     $password = mysqli_real_escape_string($conn, $_POST["Password"]);
