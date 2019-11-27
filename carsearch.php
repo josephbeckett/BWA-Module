@@ -55,16 +55,14 @@ include("session.php");
         </div>
       </div>
       <div class="col-sm-10 bg-light">
-        <div class="row mt-2">
-            <form class="input-group input-group-search mb-2" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="POST">
-              <input class="car-search-input form-control ml-3" type="text" name="search" placeholder="Search for a car">
-              <div class="input-group-append">
-                <button class="car-search-button btn" type="submit" name="submit-search"><i class="fas fa-search"></i></button>
-                <button class="car-favourite-button btn" type="submit" name="favourite-search"><i class="fas fa-bookmark"></i></button>
-              </div>
-            </form>
-        </div>
         <div class="row">
+          <form class="input-group input-group-search mb-2 mt-2" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="POST">
+            <input class="car-search-input form-control ml-3" type="text" name="search" placeholder="Search for a car">
+            <div class="input-group-append">
+              <button class="car-search-button btn" type="submit" name="submit-search"><i class="fas fa-search"></i></button>
+              <button class="car-favourite-button btn" type="submit" name="favourite-search"><i class="fas fa-bookmark"></i></button>
+            </div>
+          </form>
           <?php
           if (!isset($_POST['submit-search']) && !isset($_POST['favourite-search'])) {
             $carlist = 'SELECT * FROM Cars';
@@ -111,8 +109,6 @@ include("session.php");
               if ($queryResult > 0) {
                 while ($row  = mysqli_fetch_assoc($results)) {
                   include("cardisplayform.php");
-
-
                 }
               } else {
                 echo 'no results match your search';
