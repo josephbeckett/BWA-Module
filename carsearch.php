@@ -1,4 +1,5 @@
 <?php
+// including the session file because you need to be logged in to use this page
 include("session.php");
 ?>
 <!DOCTYPE html>
@@ -19,6 +20,7 @@ include("session.php");
 
 <body>
   <?php
+  // including the navbar and the php file that controls saving cars to the favourites
   include "navbar.php";
   include "savecar.php";
   ?>
@@ -26,8 +28,9 @@ include("session.php");
     <div class="row">
       <div class="col-md-2 column-2">
         <div class="list-group mb-2 mt-2 sticky-group">
-        
+
           <a href="#" class="list-group-item list-group-item-action active">Recent searches</a>
+          <!-- selecting all of the users recent searches from the database and displaying them in a list group -->
           <?php
           $rsbt = "SELECT * FROM recentsearch WHERE userID = $userID ORDER BY timeSearched DESC LIMIT 5";
           $rsbtq = mysqli_query($conn, $rsbt);
@@ -40,6 +43,7 @@ include("session.php");
             }
           }
           ?>
+          <!-- selecting all of the users recent searches from the database and displaying them in a list group -->
           <a href="#" class="list-group-item list-group-item-action active"> Most Searched</a>
           <?php
           $recentsearches = "SELECT * FROM recentsearch WHERE userID = $userID ORDER BY amountSearched DESC LIMIT 5";
@@ -65,6 +69,7 @@ include("session.php");
             </div>
           </form>
           <?php
+          // if search button or favourites button are not pressed, it will just display all the cars in the data
           if (!isset($_POST['submit-search']) && !isset($_POST['favourite-search'])) {
             $carlist = 'SELECT * FROM cars';
             $carresults = mysqli_query($conn, $carlist);
@@ -74,13 +79,15 @@ include("session.php");
                 include("cardisplayform.php");
               }
             }
+            // if the user presses the submit button to search the data base it will carry out the search using the code below
           } else if (isset($_POST['submit-search'])) {
             $search = mysqli_real_escape_string($conn, $_POST['search']);
             //checking recent search
             if ($search == "") {
+              // if the user has entered nothing but tried to search it just refreshes the page
               header("location: carsearch.php");
             } else {
-              // check if query is already saved
+              // check if search is already saved
               $recentsql = "SELECT * FROM recentsearch WHERE userID='$userID' AND searchQuery='$search';";
               $searchresults = mysqli_query($conn, $recentsql);
               $resultCheck = mysqli_num_rows($searchresults);
