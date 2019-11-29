@@ -29,7 +29,7 @@ $formatteddateofbirth = date("d-m-Y", strtotime($dateofbirth));
         <div class="list-group">
           <button id="UserM" class="btn list-group-item list-group-item-action active">User Information</button>
           <button id="EditD" class="btn list-group-item list-group-item-action">Edit Personal Details</button>
-          <button id="SavedC" class="btn list-group-item list-group-item-action">Saved Cars</button>
+          <button id="SavedC" class="btn list-group-item list-group-item-action">Favourite Cars</button>
           <button id="Searches" class="btn list-group-item list-group-item-action">Searches</button>
         </div>
       </div>
@@ -43,115 +43,15 @@ $formatteddateofbirth = date("d-m-Y", strtotime($dateofbirth));
               </div>
             </div>
             <div class="row">
-              <div class="col-md-12">
+              <div class="col-md-12 col-sm-12 col-lg-12">
                 <!-- User Information Form -->
-                <form id="UserInfoBox">
-                  <div class="form-group row">
-                    <label for="username" class="col-4 col-form-label">User Name</label>
-                    <div class="col-8">
-                      <h4><?php echo $row["Username"];?></h4>
-                    </div>
-                  </div>
-                  <div class="form-group row">
-                    <label for="email" class="col-4 col-form-label">Email</label>
-                    <div class="col-8">
-                      <h4><?php echo $row["Email"];?></h4>
-                    </div>
-                  </div>
-                  <div class="form-group row">
-                    <label for="housenumber" class="col-4 col-form-label">House Name/Number</label>
-                    <div class="col-8">
-                      <h4><?php echo $row["House_Name"];?></h4>
-                    </div>
-                  </div>
-                  <div class="form-group row">
-                    <label for="addline1" class="col-4 col-form-label">Address Line 1</label>
-                    <div class="col-8">
-                      <h4><?php echo $row["Address_Line_2"];?></h4>
-                    </div>
-                  </div>
-                  <div class="form-group row">
-                    <label for="addline2" class="col-4 col-form-label">Address Line 2</label>
-                    <div class="col-8">
-                      <h4><?php echo $row["Address_Line_2"];?></h4>
-                    </div>
-                  </div>
-                  <div class="form-group row">
-                    <label for="postcode" class="col-4 col-form-label">Postcode</label>
-                    <div class="col-8">
-                      <h4><?php echo $row["Postcode"];?></h4>
-                    </div>
-                  </div>
-                  <div class="form-group row">
-                    <label for="DOB" class="col-4 col-form-label">Date of Birth</label>
-                    <div class="col-8">
-                      <h4><?php echo $formatteddateofbirth;?></h4>
-                    </div>
-                  </div>
-                  <div class="form-group row">
-                    <label for="PhoneNum" class="col-4 col-form-label">Phone Number</label>
-                    <div class="col-8">
-                      <h4><?php echo $row["Phone_Number"];?></h4>
-                    </div>
-                  </div>
-                </form>
-
+                <?php include('userInfoForm.php'); ?>
                 <!-- Editing user details form -->
-                <form id="EditDForm" class="hidden" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="POST">
-                  <div class="form-group row">
-                    <label for="username" class="col-4 col-form-label">User Name</label>
-                    <div class="col-8">
-                      <input id="username" name="username" placeholder="Username" class="form-control here" required="required" type="text" value="<?php echo $row["Username"]; ?>">
-                    </div>
-                  </div>
-                  <div class="form-group row">
-                    <label for="email" class="col-4 col-form-label">Email</label>
-                    <div class="col-8">
-                      <input id="email" name="email" placeholder="Email" class="form-control here" required="required" type="text" value="<?php echo $row["Email"]; ?>">
-                    </div>
-                  </div>
-                  <div class="form-group row">
-                    <label for="housenumber" class="col-4 col-form-label">House Name/Number</label>
-                    <div class="col-8">
-                      <input id="housenumber" name="housenumber" placeholder="House Name/Number" class="form-control here" type="text" value="<?php echo $row["House_Name"]; ?>">
-                    </div>
-                  </div>
-                  <div class="form-group row">
-                    <label for="addline1" class="col-4 col-form-label">Address Line 1</label>
-                    <div class="col-8">
-                      <input id="addline1" name="addline1" placeholder="Address Line 1 " class="form-control here" type="text" value="<?php echo $row["Address_Line_1"]; ?>">
-                    </div>
-                  </div>
-                  <div class="form-group row">
-                    <label for="addline2" class="col-4 col-form-label">Address Line 2</label>
-                    <div class="col-8">
-                      <input id="addline2" name="addline2" placeholder="Address Line 2 " class="form-control here" type="text" value="<?php echo $row["Address_Line_2"]; ?>">
-                    </div>
-                  </div>
-                  <div class="form-group row">
-                    <label for="postcode" class="col-4 col-form-label">Postcode</label>
-                    <div class="col-8">
-                      <input id="postcode" name="postcode" placeholder="Postcode" class="form-control here" type="text" value="<?php echo $row["Postcode"]; ?>">
-                    </div>
-                  </div>
-                  <div class="form-group row">
-                    <label for="dateofbirth" class="col-4 col-form-label">Date of Birth</label>
-                    <div class="col-8">
-                      <input id="dateofbirth" name="Dateofbirth" placeholder="Date of Birth" class="form-control here" type="text" value="<?php echo $row["Date_Of_Birth"]; ?>">
-                    </div>
-                  </div>
-                  <div class="form-group row">
-                    <label for="phonenumber" class="col-4 col-form-label">Phone Number</label>
-                    <div class="col-8">
-                      <input id="phonenumber" name="Phonenumber" placeholder="Phone Number" class="form-control here" type="text" value="<?php echo $row["Phone_Number"]; ?>">
-                    </div>
-                  </div>
-                  <div class="form-group row">
-                    <div class="offset-4 col-8">
-                      <button name="Update" type="submit" class="btn btn-primary">Update My Profile</button>
-                    </div>
-                  </div>
-                </form>
+                <?php include('userEditInfoForm.php'); ?>
+                <!-- Displaying user favourited cars on profile -->
+                <?php include('userSavedCarsForm.php'); ?>
+                <!-- Displaying user searches on profile -->
+                <?php include('userSearchesForm.php'); ?>
               </div>
             </div>
           </div>

@@ -4,20 +4,30 @@
 !_TAG_PROGRAM_NAME	Exuberant Ctags	//
 !_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
 !_TAG_PROGRAM_VERSION	5.8	//
-favresults	C:\xampp\htdocs\BWA-Module\carsearch.php	/^\/\/ $favresults = mysqli_query($conn, "SELECT * FROM Favourites WHERE userID=$userID AND carID=" . $carrow['carID'] . "");$/;"	variable	line:3
-carlist	C:\xampp\htdocs\BWA-Module\carsearch.php	/^                $carlist = 'SELECT * FROM Cars';$/;"	variable	line:41
-carresults	C:\xampp\htdocs\BWA-Module\carsearch.php	/^                $carresults = mysqli_query($conn, $carlist);$/;"	variable	line:42
-queryResult	C:\xampp\htdocs\BWA-Module\carsearch.php	/^                $queryResult = mysqli_num_rows($carresults);$/;"	variable	line:43
-search	C:\xampp\htdocs\BWA-Module\carsearch.php	/^                $search = mysqli_real_escape_string($conn, $_POST['search']);$/;"	variable	line:50
-query_sql	C:\xampp\htdocs\BWA-Module\carsearch.php	/^                $query_sql = "SELECT * FROM recentQuery WHERE userID='$userID' AND searchQuery='$search'";$/;"	variable	line:52
-searchresults	C:\xampp\htdocs\BWA-Module\carsearch.php	/^                $searchresults = mysqli_query($conn, $query_sql);$/;"	variable	line:53
-resultCheck	C:\xampp\htdocs\BWA-Module\carsearch.php	/^                $resultCheck = mysqli_num_rows($searchresults);$/;"	variable	line:54
-amount	C:\xampp\htdocs\BWA-Module\carsearch.php	/^                    $amount = $row['amountSearched'] + 1;$/;"	variable	line:58
-update_sql	C:\xampp\htdocs\BWA-Module\carsearch.php	/^                    $update_sql = "UPDATE recentQuery SET amount='$amount' WHERE searchQuery='$search' AND userID='$userID';";$/;"	variable	line:59
-insert_sql	C:\xampp\htdocs\BWA-Module\carsearch.php	/^                  $insert_sql = "INSERT INTO query (userID, searchQuery, aamountSearched) VALUES ('$userID', '$search', '1');";$/;"	variable	line:64
-sql	C:\xampp\htdocs\BWA-Module\carsearch.php	/^                $sql = "SELECT * FROM Cars WHERE Make LIKE '%$search%' OR Model LIKE '%$search%' OR Fuel_Type LIKE '%$search%'$/;"	variable	line:74
-results	C:\xampp\htdocs\BWA-Module\carsearch.php	/^                $results = mysqli_query($conn, $sql);$/;"	variable	line:76
-queryResult	C:\xampp\htdocs\BWA-Module\carsearch.php	/^                $queryResult = mysqli_num_rows($results);$/;"	variable	line:77
-search	C:\xampp\htdocs\BWA-Module\carsearch.php	/^                $search = "SELECT * FROM Favourites INNER JOIN Cars ON Favourites.carID = Cars.carID WHERE Favourites.userID = $userID";$/;"	variable	line:86
-searchresult	C:\xampp\htdocs\BWA-Module\carsearch.php	/^                $searchresult = mysqli_query($conn, $search);$/;"	variable	line:87
-searchrow	C:\xampp\htdocs\BWA-Module\carsearch.php	/^                $searchrow = mysqli_num_rows($searchresult);$/;"	variable	line:88
+username	C:\xampp\htdocs\BWA-Module\createuser.php	/^  $username = mysqli_real_escape_string($conn, $_POST["Username"]);$/;"	variable	line:6
+firstname	C:\xampp\htdocs\BWA-Module\createuser.php	/^  $firstname = "Not Set";$/;"	variable	line:7
+lastname	C:\xampp\htdocs\BWA-Module\createuser.php	/^  $lastname = "Not Set";$/;"	variable	line:8
+password	C:\xampp\htdocs\BWA-Module\createuser.php	/^  $password = mysqli_real_escape_string($conn, $_POST["Password"]);$/;"	variable	line:9
+repeatpassword	C:\xampp\htdocs\BWA-Module\createuser.php	/^  $repeatpassword = mysqli_real_escape_string($conn, $_POST["Repeatpassword"]);$/;"	variable	line:10
+email	C:\xampp\htdocs\BWA-Module\createuser.php	/^  $email = mysqli_real_escape_string($conn, $_POST["Email"]);$/;"	variable	line:11
+housename	C:\xampp\htdocs\BWA-Module\createuser.php	/^  $housename = "Not Set";$/;"	variable	line:12
+addline1	C:\xampp\htdocs\BWA-Module\createuser.php	/^  $addline1 =  "Not Set";$/;"	variable	line:13
+addline2	C:\xampp\htdocs\BWA-Module\createuser.php	/^  $addline2 =  "Not Set";$/;"	variable	line:14
+postcode	C:\xampp\htdocs\BWA-Module\createuser.php	/^  $postcode =  "Not Set";$/;"	variable	line:15
+dob	C:\xampp\htdocs\BWA-Module\createuser.php	/^  $dob =  "0000-00-00";$/;"	variable	line:16
+phonenum	C:\xampp\htdocs\BWA-Module\createuser.php	/^  $phonenum =  "Not Set";$/;"	variable	line:17
+createUserError	C:\xampp\htdocs\BWA-Module\createuser.php	/^    $createUserError = 'the password does not meet the requirements!';$/;"	variable	line:20
+createUserError	C:\xampp\htdocs\BWA-Module\createuser.php	/^      $createUserError = "Passwords don't match";$/;"	variable	line:23
+createUserError	C:\xampp\htdocs\BWA-Module\createuser.php	/^        $createUserError = "Username must only contain letters";$/;"	variable	line:26
+usernameSearch	C:\xampp\htdocs\BWA-Module\createuser.php	/^        $usernameSearch = "SELECT * FROM user WHERE Username='$username'";$/;"	variable	line:28
+userSearchResults	C:\xampp\htdocs\BWA-Module\createuser.php	/^        $userSearchResults = mysqli_query($conn, $usernameSearch);$/;"	variable	line:29
+userSearchQuery	C:\xampp\htdocs\BWA-Module\createuser.php	/^        $userSearchQuery = mysqli_num_rows($userSearchResults);$/;"	variable	line:30
+createUserError	C:\xampp\htdocs\BWA-Module\createuser.php	/^          $createUserError = "Username already in use";$/;"	variable	line:32
+emailSearch	C:\xampp\htdocs\BWA-Module\createuser.php	/^          $emailSearch = "SELECT * FROM user WHERE Email='$email'";$/;"	variable	line:34
+emailSearchResults	C:\xampp\htdocs\BWA-Module\createuser.php	/^          $emailSearchResults = mysqli_query($conn, $emailSearch);$/;"	variable	line:35
+emailSearchQuery	C:\xampp\htdocs\BWA-Module\createuser.php	/^          $emailSearchQuery = mysqli_num_rows($emailSearchResults);$/;"	variable	line:36
+createUserError	C:\xampp\htdocs\BWA-Module\createuser.php	/^            $createUserError = "Email already in use";$/;"	variable	line:38
+encryptedpassword	C:\xampp\htdocs\BWA-Module\createuser.php	/^            $encryptedpassword = password_hash($password, PASSWORD_DEFAULT);$/;"	variable	line:40
+sql	C:\xampp\htdocs\BWA-Module\createuser.php	/^            $sql = "INSERT INTO user (Username, First_Name, Last_Name, Password, Email, House_Name, Address_Line_1, Address_Line_2, Postcode, Date_Of_Birth, Phone_Number, Details_Updated) VALUES ('$username', '$firstname', '$lastname', '$encryptedpassword', '$email', '$housename', '$addline1', '$addline2', '$postcode', '$dob', '$phonenum', '0')";$/;"	variable	line:41
+createUserError	C:\xampp\htdocs\BWA-Module\createuser.php	/^              $createUserError = "User Created Successfully";$/;"	variable	line:43
+createUserError	C:\xampp\htdocs\BWA-Module\createuser.php	/^              $createUserError = 'Unable to create user';$/;"	variable	line:45
