@@ -29,7 +29,7 @@ if (isset($_POST['Submit'])) {
             $createUserError = "Email already in use";
       } else {
         $encryptedpassword = password_hash($password, PASSWORD_DEFAULT);
-        $sql = "INSERT INTO user (Username, Password, Email, House_Name, Address_Line_1, Address_Line_2, Postcode, Date_Of_Birth, Phone_Number) VALUES ('$username', '$encryptedpassword', '$email', '$housename', '$addline1', '$addline2', '$postcode', '$dob', '$phonenum')";
+        $sql = "INSERT INTO user (Username, Password, Email, House_Name, Address_Line_1, Address_Line_2, Postcode, Date_Of_Birth, Phone_Number, Details_Updated) VALUES ('$username', '$encryptedpassword', '$email', '$housename', '$addline1', '$addline2', '$postcode', '$dob', '$phonenum', '0')";
         if (mysqli_query($conn, $sql)) {
           $createUserError = "User Created Successfully";
         } else {

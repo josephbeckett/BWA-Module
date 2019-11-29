@@ -8,8 +8,7 @@ if (isset($_POST['Update'])) {
     $postcode = mysqli_real_escape_string($conn, $_POST["postcode"]);
     $dob = mysqli_real_escape_string($conn, $_POST["Dateofbirth"]);
     $phonenum = mysqli_real_escape_string($conn, $_POST["Phonenumber"]);
-    $sql = "UPDATE user SET Username = '$username', Email = '$email', House_Name = '$housename', Address_Line_1 = '$addline1', Address_Line_2 = '$addline2'
-    , Postcode = '$postcode', Date_Of_Birth = '$dob', Phone_Number = '$phonenum' WHERE userID=$userID";
+    $sql = "UPDATE user SET Username = '$username', Email = '$email', House_Name = '$housename', Address_Line_1 = '$addline1', Address_Line_2 = '$addline2', Postcode = '$postcode', Date_Of_Birth = '$dob', Phone_Number = '$phonenum', Details_Updated='1' WHERE userID=$userID";
     if(mysqli_query($conn, $sql)) {
         $info = 'User Updated Successfully';
         header("location: profile.php");
