@@ -50,7 +50,7 @@
   <div class="form-group row">
     <label for="dateofbirth" class="col-4 col-form-label">Date of Birth</label>
     <div class="col-8">
-      <input id="dateofbirth" name="Dateofbirth" placeholder="Date of Birth" class="form-control here" type="text" value="<?php echo $row["Date_Of_Birth"]; ?>">
+      <input id="dateofbirth" name="Dateofbirth" placeholder="Date of Birth" class="form-control here" type="date" value="<?php echo $row["Date_Of_Birth"]; ?>">
     </div>
   </div>
   <div class="form-group row">

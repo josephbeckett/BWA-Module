@@ -4,30 +4,9 @@
 !_TAG_PROGRAM_NAME	Exuberant Ctags	//
 !_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
 !_TAG_PROGRAM_VERSION	5.8	//
-username	C:\xampp\htdocs\BWA-Module\createuser.php	/^  $username = mysqli_real_escape_string($conn, $_POST["Username"]);$/;"	variable	line:6
-firstname	C:\xampp\htdocs\BWA-Module\createuser.php	/^  $firstname = "Not Set";$/;"	variable	line:7
-lastname	C:\xampp\htdocs\BWA-Module\createuser.php	/^  $lastname = "Not Set";$/;"	variable	line:8
-password	C:\xampp\htdocs\BWA-Module\createuser.php	/^  $password = mysqli_real_escape_string($conn, $_POST["Password"]);$/;"	variable	line:9
-repeatpassword	C:\xampp\htdocs\BWA-Module\createuser.php	/^  $repeatpassword = mysqli_real_escape_string($conn, $_POST["Repeatpassword"]);$/;"	variable	line:10
-email	C:\xampp\htdocs\BWA-Module\createuser.php	/^  $email = mysqli_real_escape_string($conn, $_POST["Email"]);$/;"	variable	line:11
-housename	C:\xampp\htdocs\BWA-Module\createuser.php	/^  $housename = "Not Set";$/;"	variable	line:12
-addline1	C:\xampp\htdocs\BWA-Module\createuser.php	/^  $addline1 =  "Not Set";$/;"	variable	line:13
-addline2	C:\xampp\htdocs\BWA-Module\createuser.php	/^  $addline2 =  "Not Set";$/;"	variable	line:14
-postcode	C:\xampp\htdocs\BWA-Module\createuser.php	/^  $postcode =  "Not Set";$/;"	variable	line:15
-dob	C:\xampp\htdocs\BWA-Module\createuser.php	/^  $dob =  "0000-00-00";$/;"	variable	line:16
-phonenum	C:\xampp\htdocs\BWA-Module\createuser.php	/^  $phonenum =  "Not Set";$/;"	variable	line:17
-createUserError	C:\xampp\htdocs\BWA-Module\createuser.php	/^    $createUserError = 'the password does not meet the requirements!';$/;"	variable	line:20
-createUserError	C:\xampp\htdocs\BWA-Module\createuser.php	/^      $createUserError = "Passwords don't match";$/;"	variable	line:23
-createUserError	C:\xampp\htdocs\BWA-Module\createuser.php	/^        $createUserError = "Username must only contain letters";$/;"	variable	line:26
-usernameSearch	C:\xampp\htdocs\BWA-Module\createuser.php	/^        $usernameSearch = "SELECT * FROM user WHERE Username='$username'";$/;"	variable	line:28
-userSearchResults	C:\xampp\htdocs\BWA-Module\createuser.php	/^        $userSearchResults = mysqli_query($conn, $usernameSearch);$/;"	variable	line:29
-userSearchQuery	C:\xampp\htdocs\BWA-Module\createuser.php	/^        $userSearchQuery = mysqli_num_rows($userSearchResults);$/;"	variable	line:30
-createUserError	C:\xampp\htdocs\BWA-Module\createuser.php	/^          $createUserError = "Username already in use";$/;"	variable	line:32
-emailSearch	C:\xampp\htdocs\BWA-Module\createuser.php	/^          $emailSearch = "SELECT * FROM user WHERE Email='$email'";$/;"	variable	line:34
-emailSearchResults	C:\xampp\htdocs\BWA-Module\createuser.php	/^          $emailSearchResults = mysqli_query($conn, $emailSearch);$/;"	variable	line:35
-emailSearchQuery	C:\xampp\htdocs\BWA-Module\createuser.php	/^          $emailSearchQuery = mysqli_num_rows($emailSearchResults);$/;"	variable	line:36
-createUserError	C:\xampp\htdocs\BWA-Module\createuser.php	/^            $createUserError = "Email already in use";$/;"	variable	line:38
-encryptedpassword	C:\xampp\htdocs\BWA-Module\createuser.php	/^            $encryptedpassword = password_hash($password, PASSWORD_DEFAULT);$/;"	variable	line:40
-sql	C:\xampp\htdocs\BWA-Module\createuser.php	/^            $sql = "INSERT INTO user (Username, First_Name, Last_Name, Password, Email, House_Name, Address_Line_1, Address_Line_2, Postcode, Date_Of_Birth, Phone_Number, Details_Updated) VALUES ('$username', '$firstname', '$lastname', '$encryptedpassword', '$email', '$housename', '$addline1', '$addline2', '$postcode', '$dob', '$phonenum', '0')";$/;"	variable	line:41
-createUserError	C:\xampp\htdocs\BWA-Module\createuser.php	/^              $createUserError = "User Created Successfully";$/;"	variable	line:43
-createUserError	C:\xampp\htdocs\BWA-Module\createuser.php	/^              $createUserError = 'Unable to create user';$/;"	variable	line:45
+rsbt	C:\xampp\htdocs\BWA-Module\userSearchesForm.php	/^      $rsbt = "SELECT * FROM recentsearch WHERE userID = $userID ORDER BY timeSearched DESC LIMIT 5";$/;"	variable	line:7
+rsbtq	C:\xampp\htdocs\BWA-Module\userSearchesForm.php	/^      $rsbtq = mysqli_query($conn, $rsbt);$/;"	variable	line:8
+rsbtqr	C:\xampp\htdocs\BWA-Module\userSearchesForm.php	/^      $rsbtqr = mysqli_num_rows($rsbtq);$/;"	variable	line:9
+recentsearches	C:\xampp\htdocs\BWA-Module\userSearchesForm.php	/^      $recentsearches = "SELECT * FROM recentsearch WHERE userID = $userID ORDER BY amountSearched DESC LIMIT 5";$/;"	variable	line:23
+rsq	C:\xampp\htdocs\BWA-Module\userSearchesForm.php	/^      $rsq = mysqli_query($conn, $recentsearches);$/;"	variable	line:24
+rsqr	C:\xampp\htdocs\BWA-Module\userSearchesForm.php	/^      $rsqr = mysqli_num_rows($rsq);$/;"	variable	line:25

@@ -1,5 +1,4 @@
 <?php
-// including the session file because you need to be logged in to use this page
 include("session.php");
 ?>
 <!DOCTYPE html>
@@ -20,7 +19,6 @@ include("session.php");
 
 <body>
   <?php
-  // including the navbar and the php file that controls saving cars to the favourites
   include "navbar.php";
   include "savecar.php";
   ?>
@@ -28,35 +26,36 @@ include("session.php");
     <div class="row">
       <div class="col-md-2 column-2">
         <div class="list-group mb-2 mt-2 sticky-group">
-
-          <a href="#" class="list-group-item list-group-item-action active">Recent searches</a>
-          <!-- selecting all of the users recent searches from the database and displaying them in a list group -->
-          <?php
-          $rsbt = "SELECT * FROM recentsearch WHERE userID = $userID ORDER BY timeSearched DESC LIMIT 5";
-          $rsbtq = mysqli_query($conn, $rsbt);
-          $rsbtqr = mysqli_num_rows($rsbtq);
-          if ($rsbtqr > 0) {
-            while ($rsbtqrow  = mysqli_fetch_assoc($rsbtq)) {
-              echo'
-              <a href="#" class="list-group-item list-group-item-action">'. $rsbtqrow['searchQuery'] .'</a>
-              ';
-            }
-          }
-          ?>
-          <!-- selecting all of the users recent searches from the database and displaying them in a list group -->
-          <a href="#" class="list-group-item list-group-item-action active"> Most Searched</a>
-          <?php
-          $recentsearches = "SELECT * FROM recentsearch WHERE userID = $userID ORDER BY amountSearched DESC LIMIT 5";
-          $rsq = mysqli_query($conn, $recentsearches);
-          $rsqr = mysqli_num_rows($rsq);
-          if ($rsqr > 0) {
-            while ($rsqrow  = mysqli_fetch_assoc($rsq)) {
-              echo'
-              <a href="#" class="list-group-item list-group-item-action">'. $rsqrow['searchQuery'] .'</a>
-              ';
-            }
-          }
-          ?>
+              <form name="recentsearch" method="POST" action"<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
+              <a class="list-group-item list-group-item-action active disabled">Recent searches</a>
+              <?php
+              $rsbt = "SELECT * FROM recentsearch WHERE userID = $userID ORDER BY timeSearched DESC LIMIT 5";
+              $rsbtq = mysqli_query($conn, $rsbt);
+              $rsbtqr = mysqli_num_rows($rsbtq);
+              if ($rsbtqr > 0) {
+                while ($rsbtqrow  = mysqli_fetch_assoc($rsbtq)) {
+                    $recentsearchword = $rsbtqrow['searchQuery'];
+                  echo'
+                  <button class="list-group-item list-group-item-action btn" name="recentsearch" type="submit" value="'.$recentsearchword.'">'. $rsbtqrow['searchQuery'] .'</button>
+                  ';
+                }
+              }
+              ?>
+              <a class="list-group-item list-group-item-action active disabled">Most Searched</a>
+              <?php
+              $recentsearches = "SELECT * FROM recentsearch WHERE userID = $userID ORDER BY amountSearched DESC LIMIT 5";
+              $rsq = mysqli_query($conn, $recentsearches);
+              $rsqr = mysqli_num_rows($rsq);
+              if ($rsqr > 0) {
+                while ($rsqrow  = mysqli_fetch_assoc($rsq)) {
+                    $mostsearchedword = $rsqrow['searchQuery'];
+                    echo'
+                    <button class="list-group-item list-group-item-action btn" name="recentsearch" type="submit" value="'.$mostsearchedword.'">'. $rsqrow['searchQuery'] .'</button>
+                    ';
+                }
+              }
+              ?>
+          </form>
         </div>
       </div>
       <div class="col-sm-10 bg-light">
@@ -69,8 +68,18 @@ include("session.php");
             </div>
           </form>
           <?php
-          // if search button or favourites button are not pressed, it will just display all the cars in the data
-          if (!isset($_POST['submit-search']) && !isset($_POST['favourite-search'])) {
+          if (isset($_POST['recentsearch'])) {
+              $recentsearch = mysqli_real_escape_string($conn, $_POST['recentsearch']);
+              $recentsearchquery = "SELECT * FROM cars WHERE Make LIKE '%$recentsearch%' OR Model LIKE '%$recentsearch%' OR Fuel_Type LIKE '%$recentsearch%'
+              OR Year LIKE '%$recentsearch%' OR Engine_Size LIKE '%$recentsearch%' OR Colour LIKE '%$recentsearch%'";
+              $recentsearchresults = mysqli_query($conn, $recentsearchquery);
+              $recentsearchqueryresults = mysqli_num_rows($recentsearchresults);
+              if($recentsearchqueryresults > 0) {
+                  while ($row = mysqli_fetch_assoc($recentsearchresults)){
+                      include('cardisplayform.php');
+                  }
+              }
+          } else if (!isset($_POST['submit-search']) && !isset($_POST['favourite-search'])) {
             $carlist = 'SELECT * FROM cars';
             $carresults = mysqli_query($conn, $carlist);
             $queryResult = mysqli_num_rows($carresults);
@@ -79,15 +88,13 @@ include("session.php");
                 include("cardisplayform.php");
               }
             }
-            // if the user presses the submit button to search the data base it will carry out the search using the code below
           } else if (isset($_POST['submit-search'])) {
             $search = mysqli_real_escape_string($conn, $_POST['search']);
             //checking recent search
             if ($search == "") {
-              // if the user has entered nothing but tried to search it just refreshes the page
               header("location: carsearch.php");
             } else {
-              // check if search is already saved
+              // check if query is already saved
               $recentsql = "SELECT * FROM recentsearch WHERE userID='$userID' AND searchQuery='$search';";
               $searchresults = mysqli_query($conn, $recentsql);
               $resultCheck = mysqli_num_rows($searchresults);
@@ -95,14 +102,14 @@ include("session.php");
                 // increment the frequency column
                 if ($searchrow = mysqli_fetch_assoc($searchresults)) {
                   $amount = $searchrow['amountSearched'] + 1;
-                  $searchtime = date("Y/m/d G:i:sa");
+                  $searchtime = date("Y/m/d G:i:s");
                   $update_sql = "UPDATE recentsearch SET amountSearched='$amount', timeSearched='$searchtime' WHERE searchQuery='$search' AND userID='$userID';";
                   mysqli_query($conn, $update_sql);
                 } else {
                   header("location: carsearch.php");
                 }
               } else {
-                $searchtime = date("Y/m/d G:i:sa");
+                $searchtime = date("Y/m/d G:i:s");
                 // add query to database
                 $insert_sql = "INSERT INTO recentsearch (userID, searchQuery, amountSearched, timeSearched) VALUES ('$userID', '$search', '1', '$searchtime');";
                 mysqli_query($conn, $insert_sql);
@@ -131,7 +138,7 @@ include("session.php");
             } else {
               echo '
               <div class="col-lg-3 col-md-4 col-sm-6 mb-3">
-              <p>You currently have no favourited cars</p>
+                <p>You currently have no favourited cars</p>
               </div>
               ';
             }

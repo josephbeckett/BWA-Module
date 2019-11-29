@@ -1,5 +1,6 @@
 <?php
 include("session.php");
+$updateUserError = '';
 include('updateuser.php');
 $dateofbirth = $row['Date_Of_Birth'];
 $formatteddateofbirth = date("d-m-Y", strtotime($dateofbirth));
@@ -37,9 +38,12 @@ $formatteddateofbirth = date("d-m-Y", strtotime($dateofbirth));
         <div class="card">
           <div class="card-body">
             <div class="row">
-              <div class="col-md-12">
+              <div class="col-md-6">
                 <h4 id="TabTitle">User Information</h4>
                 <hr>
+              </div>
+              <div class="col-md-6">
+                <label> <?php echo $updateUserError; ?></label>
               </div>
             </div>
             <div class="row">

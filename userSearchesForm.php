@@ -10,7 +10,7 @@
       if ($rsbtqr > 0) {
         while ($rsbtqrow  = mysqli_fetch_assoc($rsbtq)) {
           echo'
-          <a href="#" class="list-group-item list-group-item-action">'. $rsbtqrow['searchQuery'] .'</a>
+          <a class="list-group-item list-group-item-action">'. $rsbtqrow['searchQuery'] .'</a>
           ';
         }
       }
@@ -26,7 +26,7 @@
       if ($rsqr > 0) {
         while ($rsqrow  = mysqli_fetch_assoc($rsq)) {
           echo'
-          <a href="#" class="list-group-item list-group-item-action">'. $rsqrow['searchQuery'] .'</a>
+          <a class="list-group-item list-group-item-action">'. $rsqrow['searchQuery'] .'</a>
           ';
         }
       }
