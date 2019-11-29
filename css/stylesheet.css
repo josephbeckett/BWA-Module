@@ -61,13 +61,11 @@ html, body{
 /* settings for the sign up form  */
 .signup-form {
     display: inline-table;
-    width: 300px;
     z-index: 20;
 }
 /* the box that the sign up form sits in */
 .signup-box {
     text-align: center;
-    display: block;
     z-index: 15;
     padding-top: 100px;
 }

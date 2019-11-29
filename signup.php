@@ -30,11 +30,13 @@
                 <div class="form-row">
                     <div class="form-group col s6">
                         <input class="form-control" name="Username" type="text" placeholder="Username" required>
+                        <label>Username must contain letters</label>
                     </div>
                 </div>
                 <div class="form-row">
                     <div class="form-group col s6">
                         <input class="form-control" id="password" name="Password" type="password" placeholder="Password" required>
+                        <label>Password must be at least 8 letters and contain a number </label>
                     </div>
                 </div>
                 <div class="form-row">
