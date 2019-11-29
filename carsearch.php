@@ -68,6 +68,7 @@ include("session.php");
             </div>
           </form>
           <?php
+          // php to allow the user to click a recent search and have it search for them
           if (isset($_POST['recentsearch'])) {
               $recentsearch = mysqli_real_escape_string($conn, $_POST['recentsearch']);
               $recentsearchquery = "SELECT * FROM cars WHERE Make LIKE '%$recentsearch%' OR Model LIKE '%$recentsearch%' OR Fuel_Type LIKE '%$recentsearch%'
@@ -79,6 +80,7 @@ include("session.php");
                       include('cardisplayform.php');
                   }
               }
+              // this is the php for when the page first loads and the user has not searched anything
           } else if (!isset($_POST['submit-search']) && !isset($_POST['favourite-search'])) {
             $carlist = 'SELECT * FROM cars';
             $carresults = mysqli_query($conn, $carlist);
@@ -88,13 +90,14 @@ include("session.php");
                 include("cardisplayform.php");
               }
             }
+            // the php for if the user carry's out a search
           } else if (isset($_POST['submit-search'])) {
             $search = mysqli_real_escape_string($conn, $_POST['search']);
-            //checking recent search
+            // checking recent search
             if ($search == "") {
               header("location: carsearch.php");
             } else {
-              // check if query is already saved
+              // check if search is already saved
               $recentsql = "SELECT * FROM recentsearch WHERE userID='$userID' AND searchQuery='$search';";
               $searchresults = mysqli_query($conn, $recentsql);
               $resultCheck = mysqli_num_rows($searchresults);
@@ -109,12 +112,13 @@ include("session.php");
                   header("location: carsearch.php");
                 }
               } else {
+                // if the search is not in the database then it adds it to the database
                 $searchtime = date("Y/m/d G:i:s");
-                // add query to database
+                // add recent search to database
                 $insert_sql = "INSERT INTO recentsearch (userID, searchQuery, amountSearched, timeSearched) VALUES ('$userID', '$search', '1', '$searchtime');";
                 mysqli_query($conn, $insert_sql);
               }
-              //searching database
+              // searching database for all the cars that match the search query
               $sql = "SELECT * FROM cars WHERE Make LIKE '%$search%' OR Model LIKE '%$search%' OR Fuel_Type LIKE '%$search%'
               OR Year LIKE '%$search%' OR Engine_Size LIKE '%$search%' OR Colour LIKE '%$search%'";
               $results = mysqli_query($conn, $sql);
@@ -127,6 +131,7 @@ include("session.php");
                 echo 'no results match your search';
               }
             }
+            // the php reqired for the user to see their favorite searches
           } else if (isset($_POST['favourite-search'])) {
             $search = "SELECT * FROM favourites INNER JOIN cars ON favourites.carID = cars.carID WHERE favourites.userID = $userID";
             $searchresult = mysqli_query($conn, $search);

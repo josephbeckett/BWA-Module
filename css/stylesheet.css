@@ -1,9 +1,11 @@
+/* Setting font and width and height of website */
 html, body{
     font-family: 'Manjari',sans-serif!important;
     height: 100vh;
     width: 100vw;
 }
 
+/* Navbar settings */
 .navbar {
     font-family: 'Gugi',cursive;
     background-color: rgba(0, 0, 0, 0.5);
@@ -11,10 +13,11 @@ html, body{
     z-index: 10;
     position: relative;
 }
-
+/* Navbar logo settings */
 .navbar-brand{
     color: rgb(24, 24, 218)!important;
 }
+/* setting index size and background position */
 .index-section {
     background-color: #ddd;
     height: 100vh;
@@ -26,7 +29,7 @@ html, body{
     background-size: cover;
     overflow: hidden;
 }
-
+/* settings for the box that holds the content on the index page */
 .index-box{
     text-align: center;
     display: block;
@@ -34,14 +37,14 @@ html, body{
     padding-top: 200px;
     color: #000000;
 }
-
+/* the form for the login on the index page */
 .index-form{
     display: inline-block;
     margin-left: auto;
     margin-right: auto;
     z-index: 20;
 }
-
+/* the box that holds the profile page */
 .profile-box {
     text-align: center;
     display: block;
@@ -50,18 +53,18 @@ html, body{
     color: #000000;
     background-size: cover;
 }
-
+/* options for the text that controls the errors on the login page */
 .login-error-text {
-    color: white;
+    color: black;
     font-size: 30px;
 }
-
+/* settings for the sign up form  */
 .signup-form {
     display: inline-table;
     width: 300px;
     z-index: 20;
 }
-
+/* the box that the sign up form sits in */
 .signup-box {
     text-align: center;
     display: block;
@@ -81,7 +84,7 @@ html, body{
   background-color: #eee;
 }
 
-
+/* all the css for the car search page is below */
 .car-search-container {
     width: 900;
     background-color: #fff;
