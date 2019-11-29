@@ -1,5 +1,6 @@
 <?php
-    include("createuser.php");
+  $createUserError = '';
+  include("createuser.php");
 ?>
 <html lang="en">
 
@@ -18,11 +19,13 @@
 
 <body>
 
-<?php 
+<?php
     include("navbar.php");
 ?>
     <div class="index-section">
         <div class="signup-box">
+          <h1>Sign Up</h1>
+          <h4><?php echo $createUserError; ?></h4>
             <form class="signup-form" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="post">
                 <div class="form-row">
                     <div class="form-group col s6">

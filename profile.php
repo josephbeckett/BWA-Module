@@ -1,5 +1,8 @@
 <?php
 include("session.php");
+include('updateuser.php');
+$dateofbirth = $row['Date_Of_Birth'];
+$formatteddateofbirth = date("d-m-Y", strtotime($dateofbirth));
 ?>
 
 <!DOCTYPE html>
@@ -24,7 +27,7 @@ include("session.php");
     <div class="row">
       <div class="col-md-3">
         <div class="list-group">
-          <button id="UserM" class="btn list-group-item list-group-item-action">User Management</button>
+          <button id="UserM" class="btn list-group-item list-group-item-action active">User Information</button>
           <button id="EditD" class="btn list-group-item list-group-item-action">Edit Personal Details</button>
           <button id="SavedC" class="btn list-group-item list-group-item-action">Saved Cars</button>
           <button id="Searches" class="btn list-group-item list-group-item-action">Searches</button>
@@ -35,64 +38,117 @@ include("session.php");
           <div class="card-body">
             <div class="row">
               <div class="col-md-12">
-                <h4>Your Profile</h4>
+                <h4 id="TabTitle">User Information</h4>
                 <hr>
               </div>
             </div>
             <div class="row">
               <div class="col-md-12">
-                <form>
+                <!-- User Information Form -->
+                <form id="UserInfoBox">
                   <div class="form-group row">
-                    <label for="username" class="col-4 col-form-label">User Name*</label>
+                    <label for="username" class="col-4 col-form-label">User Name</label>
                     <div class="col-8">
-                      <input id="username" name="username" placeholder="Username" class="form-control here" required="required" type="text">
+                      <h4><?php echo $row["Username"];?></h4>
                     </div>
                   </div>
                   <div class="form-group row">
-                    <label for="name" class="col-4 col-form-label">First Name</label>
+                    <label for="email" class="col-4 col-form-label">Email</label>
                     <div class="col-8">
-                      <input id="name" name="name" placeholder="First Name" class="form-control here" type="text">
-                    </div>
-                  </div>
-                  <div class="form-group row">
-                    <label for="lastname" class="col-4 col-form-label">Last Name</label>
-                    <div class="col-8">
-                      <input id="lastname" name="lastname" placeholder="Last Name" class="form-control here" type="text">
-                    </div>
-                  </div>
-                  <div class="form-group row">
-                    <label for="email" class="col-4 col-form-label">Email*</label>
-                    <div class="col-8">
-                      <input id="email" name="email" placeholder="Email" class="form-control here" required="required" type="text">
+                      <h4><?php echo $row["Email"];?></h4>
                     </div>
                   </div>
                   <div class="form-group row">
                     <label for="housenumber" class="col-4 col-form-label">House Name/Number</label>
                     <div class="col-8">
-                      <input id="housenumber" name="housenumber" placeholder="House Name/Number" class="form-control here" type="text">
+                      <h4><?php echo $row["House_Name"];?></h4>
                     </div>
                   </div>
                   <div class="form-group row">
                     <label for="addline1" class="col-4 col-form-label">Address Line 1</label>
                     <div class="col-8">
-                      <input id="addline1" name="addline1" placeholder="Address Line 1 " class="form-control here" type="text">
+                      <h4><?php echo $row["Address_Line_2"];?></h4>
                     </div>
                   </div>
                   <div class="form-group row">
                     <label for="addline2" class="col-4 col-form-label">Address Line 2</label>
                     <div class="col-8">
-                      <input id="addline2" name="addline2" placeholder="Address Line 2 " class="form-control here" type="text">
+                      <h4><?php echo $row["Address_Line_2"];?></h4>
                     </div>
                   </div>
                   <div class="form-group row">
                     <label for="postcode" class="col-4 col-form-label">Postcode</label>
                     <div class="col-8">
-                      <input id="postcode" name="postcode" placeholder="Postcode" class="form-control here" type="text">
+                      <h4><?php echo $row["Postcode"];?></h4>
+                    </div>
+                  </div>
+                  <div class="form-group row">
+                    <label for="DOB" class="col-4 col-form-label">Date of Birth</label>
+                    <div class="col-8">
+                      <h4><?php echo $formatteddateofbirth;?></h4>
+                    </div>
+                  </div>
+                  <div class="form-group row">
+                    <label for="PhoneNum" class="col-4 col-form-label">Phone Number</label>
+                    <div class="col-8">
+                      <h4><?php echo $row["Phone_Number"];?></h4>
+                    </div>
+                  </div>
+                </form>
+
+                <!-- Editing user details form -->
+                <form id="EditDForm" class="hidden" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="POST">
+                  <div class="form-group row">
+                    <label for="username" class="col-4 col-form-label">User Name</label>
+                    <div class="col-8">
+                      <input id="username" name="username" placeholder="Username" class="form-control here" required="required" type="text" value="<?php echo $row["Username"]; ?>">
+                    </div>
+                  </div>
+                  <div class="form-group row">
+                    <label for="email" class="col-4 col-form-label">Email</label>
+                    <div class="col-8">
+                      <input id="email" name="email" placeholder="Email" class="form-control here" required="required" type="text" value="<?php echo $row["Email"]; ?>">
+                    </div>
+                  </div>
+                  <div class="form-group row">
+                    <label for="housenumber" class="col-4 col-form-label">House Name/Number</label>
+                    <div class="col-8">
+                      <input id="housenumber" name="housenumber" placeholder="House Name/Number" class="form-control here" type="text" value="<?php echo $row["House_Name"]; ?>">
+                    </div>
+                  </div>
+                  <div class="form-group row">
+                    <label for="addline1" class="col-4 col-form-label">Address Line 1</label>
+                    <div class="col-8">
+                      <input id="addline1" name="addline1" placeholder="Address Line 1 " class="form-control here" type="text" value="<?php echo $row["Address_Line_1"]; ?>">
+                    </div>
+                  </div>
+                  <div class="form-group row">
+                    <label for="addline2" class="col-4 col-form-label">Address Line 2</label>
+                    <div class="col-8">
+                      <input id="addline2" name="addline2" placeholder="Address Line 2 " class="form-control here" type="text" value="<?php echo $row["Address_Line_2"]; ?>">
+                    </div>
+                  </div>
+                  <div class="form-group row">
+                    <label for="postcode" class="col-4 col-form-label">Postcode</label>
+                    <div class="col-8">
+                      <input id="postcode" name="postcode" placeholder="Postcode" class="form-control here" type="text" value="<?php echo $row["Postcode"]; ?>">
+                    </div>
+                  </div>
+                  <div class="form-group row">
+                    <label for="dateofbirth" class="col-4 col-form-label">Date of Birth</label>
+                    <div class="col-8">
+                      <input id="dateofbirth" name="Dateofbirth" placeholder="Date of Birth" class="form-control here" type="text" value="<?php echo $row["Date_Of_Birth"]; ?>">
+                    </div>
+                  </div>
+                  <div class="form-group row">
+                    <label for="phonenumber" class="col-4 col-form-label">Phone Number</label>
+                    <div class="col-8">
+                      <input id="phonenumber" name="Phonenumber" placeholder="Phone Number" class="form-control here" type="text" value="<?php echo $row["Phone_Number"]; ?>">
                     </div>
                   </div>
                   <div class="form-group row">
                     <div class="offset-4 col-8">
-                      <button name="submit" type="submit" class="btn btn-primary">Update My Profile</button>
+                      <button name="Update" type="submit" class="btn btn-primary">Update My Profile</button>
                     </div>
                   </div>
                 </form>
@@ -103,64 +159,10 @@ include("session.php");
       </div>
     </div>
   </div>
-  <!-- <div class="index-section">
-  <div class="profile-box">
-  <div class="container" id="profile-info">
-  <?php
-  // $dateofbirth = $row['Date_Of_Birth'];
-  // $formatteddateofbirth = date("d-m-Y", strtotime($dateofbirth));
-  // if (isset($_POST['update-profile'])) {
-  //   include("updatedetailsform.php");
-  // } else if (!isset($_POST['update-profile'])) {
-  //   $search = "SELECT * FROM user WHERE userID = $userID";
-  //   $searchresult = mysqli_query($conn, $search);
-  //   $searchrow = mysqli_num_rows($searchresult);
-  //   echo '
-  //   <h1>Username: '.$row["Username"].'</h1>
-  //   <h1>House Number or Name: '.$row['House_Name'].'</h1>
-  //   <h1>Address Line 1: '.$row["Address_Line_1"].'</h1>
-  //   <h1>Address Line 2: '.$row["Address_Line_2"].'</h1>
-  //   <h1>Postcode: '.$row["Postcode"].'</h1>
-  //   <h1>Date of Birth: '.$formatteddateofbirth.'</h1>
-  //   <h1>Phone Number: '.$row["Phone_Number"].'</h1>
-  //   <form action="profile.php">
-  //       <input class="btn btn-update" name="update-profile" type="submit" value="Update User Details" />
-  //   </form>';
-  // }
-  ?>
-
-</div>
-</div>
-</div>
-
-
-
-
-
-<div class="form-group row">
-  <label for="newpass" class="col-4 col-form-label">New Password</label>
-  <div class="col-8">
-    <input id="newpass" name="newpass" placeholder="New Password" class="form-control here" type="text">
-  </div>
-</div>
-
-
-
-
-
-
-
-
-
-
-
--->
 </body>
-
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <script src="js/carsave.js"></script>
 <script src="js/all.js"></script>
 <script src="js/stylesheet.js"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-
 </html>

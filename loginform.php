@@ -1,5 +1,7 @@
 <div class="index-section">
-    <div class="index-box">
+    <div class="index-box mr-4 ml-4">
+      <h1>Arcadius Cars</h1>
+      <h4>Log in</h4>
         <form class="index-form" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="post">
             <div class="form-row">
                 <div class="form-group col-md-6">
@@ -16,5 +18,6 @@
                 </div> -->
             </div>
         </form>
+        <h3>if you don't have an account click <a href="signup.php">here</a> to create one</h3>
     </div>
 </div>

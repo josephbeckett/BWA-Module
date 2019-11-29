@@ -1,17 +1,15 @@
 <?php
-include('session.php');
-$info ='';
 if (isset($_POST['Update'])) {
-    $username = mysqli_real_escape_string($conn, $_POST["NewUsername"]);
-    $email = mysqli_real_escape_string($conn, $_POST["NewEmail"]);
-    $housename = mysqli_real_escape_string($conn, $_POST["NewHouseName"]);
-    $addline1 = mysqli_real_escape_string($conn, $_POST["NewAddLine1"]);
-    $addline2 = mysqli_real_escape_string($conn, $_POST["NewAddLine2"]);
-    $postcode = mysqli_real_escape_string($conn, $_POST["NewPostcode"]);
-    $dob = mysqli_real_escape_string($conn, $_POST["NewDOB"]);
-    $phonenum = mysqli_real_escape_string($conn, $_POST["NewPhoneNo"]);
+    $username = mysqli_real_escape_string($conn, $_POST["username"]);
+    $email = mysqli_real_escape_string($conn, $_POST["email"]);
+    $housename = mysqli_real_escape_string($conn, $_POST["housenumber"]);
+    $addline1 = mysqli_real_escape_string($conn, $_POST["addline1"]);
+    $addline2 = mysqli_real_escape_string($conn, $_POST["addline2"]);
+    $postcode = mysqli_real_escape_string($conn, $_POST["postcode"]);
+    $dob = mysqli_real_escape_string($conn, $_POST["Dateofbirth"]);
+    $phonenum = mysqli_real_escape_string($conn, $_POST["Phonenumber"]);
     $sql = "UPDATE user SET Username = '$username', Email = '$email', House_Name = '$housename', Address_Line_1 = '$addline1', Address_Line_2 = '$addline2'
-    , Postcode = '$postcode', Date_Of_Birth = '$dob', Phone_Number = '$phonenum' WHERE userID = '$_SESSION[login_user]' ";
+    , Postcode = '$postcode', Date_Of_Birth = '$dob', Phone_Number = '$phonenum' WHERE userID=$userID";
     if(mysqli_query($conn, $sql)) {
         $info = 'User Updated Successfully';
         header("location: profile.php");
