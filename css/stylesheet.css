@@ -84,7 +84,7 @@ html, body{
 
 /* all the css for the car search page is below */
 .car-search-container {
-    width: 900;
+    width: 900px;
     background-color: #fff;
     padding: 30px;
 }
